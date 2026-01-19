@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //用户输入秒数
+        let second = Number(prompt('请输入秒数:'))
+        //封装函数
+        function getTime(second){
+            let h = parseInt(second / 60 / 60);
+            let m = parseInt(second / 60 % 60);
+            let s = parseInt(second % 60);
+            h = h < 10 ? '0' + h : h;
+            m = m < 10 ? '0' + m : m;
+            s = s < 10 ? '0' + s : s;
+            return `你输入的时间是:${h}:${m}:${s}`;
+        }
+        //调用函数
+        getTime(second);
+        document.write(getTime(second));
+    </script>
+</body>
+</html>

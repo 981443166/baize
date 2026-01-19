@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span{
+            display: inline-block;
+            width: 90px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            border: 1px solid #353535;
+            box-shadow: 5px 5px 8px #919191 ;
+            margin: 5px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // 1. 打印1-10
+        for(let i = 1;i <= 10;i++){
+            console.log(i);
+        }
+
+        //求1-100之间所有偶数的和
+        let sum = 0;
+        for(let i = 1;i <= 100;i++){
+            if(i % 2 === 0){
+                sum += i;
+            }
+        }
+        console.log(sum);
+
+        //打印五个小星星
+        // for(let i = 1;i <= 5;i++){
+        //     document.write('*');
+        // }
+
+        //循环数组
+        let arr = ["张三","李四","王五","赵六"];
+        for(let i = 0;i < arr.length;i++){
+            if(arr[i] === "王五"){
+                continue;
+            }
+            console.log(arr[i]);
+        }
+
+        //双重循环
+        for(let i = 1;i <= 5;i++){
+            for(let j = 1;j <= 5;j++){
+                console.log(`i=${i},j=${j}`);
+            }
+        }
+
+        //打印五行五列的星星
+        // for(let i = 1;i <= 5;i++){
+        //     for(let j = 1;j <= 5;j++){
+        //         document.write('*');
+        //     }
+        //     document.write('<br>');
+        // }
+
+        //用户输入一个数字，打印这个行数的星星
+        // let num = Number(prompt('请输入一个数字'));
+        // for(let i = 1;i <= num;i++){
+        //     for(let j = 1;j <= 5;j++){
+        //         document.write('*');
+        //     }
+        //     document.write('<br>');
+        // }
+
+        //打印倒三角星星
+        // for(let i = 0;i < 10;i++){
+        //     //如果想要正三角，把j的循环条件改为j <= i即可
+        //     for(let j = 0;j < 10 - i;j++){
+        //         document.write('*');
+        //     }
+        //     document.write('<br>');
+        // }
+
+        //打印九九乘法表
+        for(let i = 1;i <= 9;i++){
+            for(let j = 1;j <= i;j++){
+                document.write(`<span>${i} * ${j} = ${i * j}</span>`);
+            }
+            document.write('<br>');
+        }
+    </script>
+</body>
+</html>

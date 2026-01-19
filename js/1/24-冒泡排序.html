@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 冒泡排序
+        // let data = [3,2,1,4];                                                                                                
+        // for(let i = 0;i < data.length;i++){
+        //     // 长度减一是因为最后一个元素不需要比较，减i是因为我们的次数是从0开始
+        //     for(let j = 0;j < data.length - 1 - i;j++){
+        //         if(data[j] > data[j + 1]){
+        //             let temp = data[j];
+        //             data[j] = data[j + 1];
+        //             data[j + 1] = temp;
+        //         }
+        //     }
+        // }
+        // console.log(data);
+
+        let data2 = [3,2,1,4,5];
+        for(let i = 0;i < data2.length - 1;i++){
+            for(let j = 0;j < data2.length - 1 - i;j++){
+                if(data2[j] > data2[j + 1]){
+                    let temp = data2[j];
+                    data2[j] = data2[j + 1];
+                    data2[j + 1] = temp;
+                }
+            }
+        }
+        console.log(data2);
+
+        // 升序
+        data2.sort(function(a,b){
+            return a - b;
+        })
+        // data2.sort((a,b) => a - b);
+        // console.log(data2);
+        // 降序
+        data2.sort((a,b) => b - a);
+        console.log(data2);
+    </script>
+</body>
+</html>

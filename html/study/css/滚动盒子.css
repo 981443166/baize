@@ -1,0 +1,93 @@
+:root {
+  --cardHeight: 40vw;
+  --cardMagin: 2vw;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ul,
+li {
+  list-style: none;
+}
+body {
+  background-color: rgb(43, 43, 43);
+  font-size: calc(1vw + 1.5vh);
+}
+
+.header {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  width: 80vw;
+  margin: 0 auto;
+  height: 100vh;
+  background-color: rgb(43, 43, 43);
+  text-align: center;
+  font-size: 2vw;
+  color: #fff;
+}
+.header div h1 {
+  margin-bottom: 1vh;
+}
+.main {
+  width: 80vw;
+  margin: 0 auto;
+}
+@keyframes scale {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.7);
+  }
+}
+.main li {
+  position: sticky;
+  top: 0;
+  display: grid;
+  overflow: hidden;
+  grid-template-columns: 1fr 1fr;
+  height: var(--cardHeight);
+  margin-bottom: var(--cardMagin);
+  border-radius: 1vw;
+  background-color: #e8e8e8;
+  animation: scale 0.5s ease-in-out forwards;
+  animation-timeline: view();
+}
+.main li .right img {
+  width: 100%;
+  height: 100%;
+}
+.main li .left {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+.main li .left > div {
+  width: 80%;
+}
+.main li .left p {
+  margin-bottom: 1vh;
+}
+button {
+  color: #090909;
+  padding: 0.7em 1.7em;
+  font-size: 18px;
+  border-radius: 0.5em;
+  background: #e8e8e8;
+  cursor: pointer;
+  border: 1px solid #e8e8e8;
+  transition: all 0.3s;
+  box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+}
+
+button:hover {
+  border: 1px solid white;
+}
+
+button:active {
+  box-shadow: 4px 4px 12px #c5c5c5, -4px -4px 12px #ffffff;
+}

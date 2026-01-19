@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //启动定时器
+        setInterval(() => {
+            document.write('hello world');
+            document.write('<br>');
+        }, 1000);
+
+        //清除定时器
+        let timer = setInterval(() => {
+            document.write('clear interval');
+            document.write('<br>');
+        }, 2000);
+        setTimeout(() => {
+            clearInterval(timer);
+        }, 5000);
+    </script>
+</body>
+</html>

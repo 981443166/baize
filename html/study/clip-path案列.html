@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: #181818;
+        }
+        h1{
+            position: relative;
+            font-size: 10rem;
+        }
+        h1::after{
+            content: '白夜泽';
+            color: transparent;
+            position: absolute;
+            top: 0;
+            left: 0;
+            /* 彩虹 */
+            background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+            /* 以文字方式裁切图片 */
+            background-clip: text;
+            /* 裁剪圆形 */
+            clip-path: circle(20% at 0 50%);
+            animation: circle 2s infinite ease-in-out;
+        }
+        @keyframes circle {
+            0%{
+                clip-path: circle(20% at 0 50%);
+            }
+            50%{
+                clip-path: circle(20% at 100% 50%);
+            }
+            100%{
+                clip-path: circle(20% at 0 50%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>白夜泽</h1>
+</body>
+</html>

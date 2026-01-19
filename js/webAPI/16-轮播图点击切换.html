@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: #979797;
+        }
+
+        .slider{
+            width: 800px;
+            height: 500px;
+            margin: 0 auto;
+            position: relative;
+            margin-top: 150px;
+
+        }
+        .slider-wrapper{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            border-radius: 50px 50px 0 0;
+        }
+        .slider-wrapper img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slider-footer{
+            width: 100%;
+            height: 80px;
+            background-color: rgba(0,0,0,0.5);
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            border-radius: 0 0 50px 50px;
+        }
+
+        .slider-footer p{
+            font-size: 20px;
+        }
+
+        .slider-indicator{
+            display: flex;
+            list-style: none;
+        }
+        .slider-indicator li{
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #6d6d6d;
+            margin: 0 5px;
+        }
+        .slider-indicator li.active{
+            width: 12px;
+            height: 12px;
+            background-color: #fff;
+        }
+
+        .toggle{
+            display: flex;
+        }
+        .toggle button{
+            width: 40px;
+            height: 40px;
+            border-radius: 20%;
+            border: none;
+            background-color: rgba(255,255,255,0.5);
+            color: #fff;
+            font-size: 20px;
+            margin: 0 10px;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .toggle button:hover{
+            background-color: #dfdfdf;
+            color: #6d6d6d;
+        }
+
+        .active{
+            background-color: #fff;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="slider">
+        <div class="slider-wrapper">
+            <img src="../webAPI/img/1.jpg" alt="">
+        </div>
+        <div class="slider-footer">
+            <p>123</p>
+            <ul class="slider-indicator">
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <div class="toggle">
+                <button class="prev">&lt;</button>
+                <button class="next">&gt;</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        const sliderData = [
+            {url: '../webAPI/img/1.jpg',title: '画师总结',color: '#42f38c'},
+            {url: '../webAPI/img/2.jpg',title: '嘟嘟脸',color: '#f3428c'},
+            {url: '../webAPI/img/3.jpg',title: '盗月社',color: '#428cf3'},
+            {url: '../webAPI/img/4.jpg',title: '731',color: '#f38c42'},
+        ]
+
+        const img = document.querySelector(".slider-wrapper img")
+        const p = document.querySelector(".slider-footer p")
+
+
+        //点击切换
+        const prev = document.querySelector(".prev")
+        const next = document.querySelector(".next") 
+
+        let i = 0
+
+        next.addEventListener('click',() => {
+            i++
+            if(i >= sliderData.length){
+                i = 0
+            }
+            img.src = sliderData[i].url
+            p.innerHTML = sliderData[i].title
+            //切换背景颜色
+            document.querySelector(".slider-footer").style.backgroundColor = sliderData[i].color
+            //指示器
+            document.querySelector(".slider-indicator .active").classList.remove("active")
+            document.querySelector(`.slider-indicator li:nth-child(${i+1})`).classList.add("active")
+        })
+
+        prev.addEventListener('click',() => {
+            i--
+            if(i < 0){
+                i = sliderData.length - 1
+            }
+            img.src = sliderData[i].url
+            p.innerHTML = sliderData[i].title
+            //切换背景颜色
+            document.querySelector(".slider-footer").style.backgroundColor = sliderData[i].color
+            //指示器
+            document.querySelector(".slider-indicator .active").classList.remove("active")
+            document.querySelector(`.slider-indicator li:nth-child(${i+1})`).classList.add("active")
+        })
+
+        //自动调用点击按钮
+        let timer = setInterval(() => {
+            next.click()
+        },1000)
+
+        //鼠标经过停止计时器
+        const slider = document.querySelector(".slider")
+        slider.addEventListener('mouseenter',() => {
+            console.log("鼠标进入了轮播图");
+            clearInterval(timer)
+        })
+
+        slider.addEventListener('mouseleave',() => {
+            console.log("鼠标离开了轮播图");
+            timer = setInterval(() => {
+                next.click()
+            },1000)
+        })
+    </script>
+</body>
+</html>

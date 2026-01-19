@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 生成随机颜色
+        function getRandomColorRGB() {
+            let red = parseInt(Math.random() * 256);
+            let green = parseInt(Math.random() * 256);
+            let blue = parseInt(Math.random() * 256);
+            return `rgb(${red}, ${green}, ${blue})`;
+        }
+
+        // 生成随机十六进制颜色
+        function getRandomColorHex() {
+            let hex = "#";
+            let arr = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"];
+            for (let i = 0; i < 6; i++) {
+               let index = parseInt(Math.random() * arr.length);
+               hex += arr[index];
+            }
+            return hex;
+        }
+
+        document.write(getRandomColorHex());
+    </script>
+</body>
+</html>

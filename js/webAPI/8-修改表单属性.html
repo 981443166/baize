@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <input type="text" value="请输入用户名"> -->
+
+    <input type="checkbox" data-name="username" data-id="1">
+    <button>提交</button>
+    <script>
+        // 1. 获取元素
+        // var input = document.querySelector('input');
+        // // 2. 操作属性
+        // console.log(input.value);
+        // // 3. 操作表单属性
+        // input.type = 'password';
+        // input.value = '123456';
+
+        // 4. 操作复选框属性
+        // var checkbox = document.querySelector('input');
+        // console.log(checkbox.checked);
+        // // checkbox.checked = true;
+        // // checkbox.checked = 'true';  隐型转换 会将字符串转换为布尔值
+
+        // // 5. 操作按钮属性
+        // var button = document.querySelector('button');
+        // console.log(button.disabled);
+        // button.disabled = true;  // 禁用按钮
+
+
+        // 6. 自定义属性
+        const input = document.querySelector('input');
+        console.log(input.dataset.name);
+        console.log(input.dataset.id);
+        
+    </script>
+</body>
+</html>

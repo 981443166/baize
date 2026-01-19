@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="html"></div>
+    <div id="text"></div>
+    <input type="text" value="123">
+
+    <script src="./jquery.js"></script>
+    <script>
+        // 获取元素的html内容
+        $("#html").html('<p>hello world</p>');  //推荐使用
+        console.log($("#html").html());
+        // 获取元素的text内容
+        $("#text").text('hello world');
+        console.log($("#text").text());
+        // 获取元素的value值                      //一般使用
+        $('input').val('hello world');
+        console.log($('input').val());
+    </script>
+</body>
+</html>

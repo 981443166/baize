@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let money = 10000;
+        while(true){
+            let option = Number(prompt('请输入您的操作：1.存款 2.取款 3.查询余额 4.退出'));
+            if(option === 4){
+                alert('谢谢使用');
+                break;
+            }
+            switch(option){
+                case 1:
+                    let deposit = Number(prompt('请输入您要存款的金额'));
+                    money += deposit;
+                    alert(`感谢存入${deposit}元，您的余额为：${money}`);
+                    break;
+                case 2:
+                    let withdraw = Number(prompt('请输入您要取款的金额'));
+                    if(withdraw > money){
+                        alert(`您的余额不足,余额还有${money}元`);
+                    }else{
+                        money -= withdraw;
+                        alert(`您取款${withdraw}元成功，您的余额为：${money}`);
+                    }
+                    break;
+                case 3:
+                    alert(`您当前的余额为：${money}`);
+                    break;
+                default:
+                    alert('您输入的操作有误');
+                    continue;
+            }
+        }
+    </script>
+</body>
+</html>

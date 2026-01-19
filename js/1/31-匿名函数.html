@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        //匿名函数1:函数表达式
+        let fn = function(){
+            console.log('hello world');
+        }
+        fn();
+
+        //匿名函数:没有函数名的函数,防止全局变量污染
+        //匿名函数2:立即执行函数,需要在函数体中添加(),而且参数需要在第二个()中传递，括号后面必须添加分号，否则会报错
+        (function(){
+            console.log('hello world');
+        })();
+        //匿名函数3:立即执行函数，有参数
+        (function(a,b){
+            console.log(a+b);
+        })(10,20);//相当于调用函数
+    </script>
+</body>
+</html>

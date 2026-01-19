@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Bodoni:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+.header {
+    height: 100rem;
+    padding: 1rem 1rem;
+    background-image: url(../pexels-souvenirpixels-417074.jpg);
+}
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  padding: 1rem 2rem;
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border-radius: 10rem;
+
+}
+
+.header .container .logo svg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3rem;
+}
+
+.header .nav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header .nav ul li {
+    margin: 0 0.5rem;
+    padding: 0.5rem 1.2rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.header .nav ul li:hover{
+    background-color: #ff6900;
+    border-radius: 10rem;
+}
+
+.header .nav ul li:hover a{
+    color: #fff;
+    border-radius: 10rem;
+}
+
+.header .nav ul li a {
+  font-size: 1.2rem;
+  color: #000;
+}
+
+.header .btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header .btn button{
+    padding: 0.5rem 1.2rem;
+    border: none;
+    margin-left: 1rem;
+    border-radius: 10rem;
+    font-size: 1rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.header .btn button:hover{
+    background-color: #ff6900;
+    color: #fff;
+}
+
+@media screen and (max-width: 1000px) {
+    .header .container .nav{
+        display: none;
+    }
+}

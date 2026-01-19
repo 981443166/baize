@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Bodoni:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+  background: url('../day1/background.jpg') bottom center ;
+  background-size: cover;
+}
+
+body,html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins';
+}
+.keys{
+    display: flex;
+    flex: 1;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+.key{
+    background: rgba(0,0,0,0.4);
+    color: white;
+    border: .4rem solid black;
+    width: 10rem;
+    margin: 1rem;
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 1rem 0.5rem;
+    border-radius: 1rem;
+    text-shadow: 0 0 .5rem black;
+    transition: all .07s ease;
+}
+
+.playing{
+    transform: scale(1.1);
+    border-color: #ffc600;
+    box-shadow: 0 0 1rem #ffc600;
+}
+
+kbd{
+    display: block;
+    font-size: 4rem;
+}
+
+.sound{
+    font-size: 1.2rem;
+    /* 文字大写 */
+    text-transform: uppercase;
+    /* 文字间距 */
+    letter-spacing: .1rem;
+    color: #ffc600;
+}

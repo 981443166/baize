@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //转换为布尔型
+        //数字里面:0为false,其他为true
+        console.log(Boolean(10));
+        console.log(Boolean(0));
+        //字符串里面:空字符串为false,其他为true
+        console.log(Boolean('hello'));
+        console.log(Boolean(''));
+        //对象:null为false,其他为true
+        console.log(Boolean({}));
+        console.log(Boolean(null));
+        //undefined为false
+        console.log(Boolean(undefined));
+        //NaN为false
+        console.log(Boolean(NaN));
+
+        function getBanana(){
+            let banana = ['banana','orange','apple'];
+            for(let i = 0;i<banana.length;i++){
+                if(banana[i] == 'banana'){
+                   document.write('true');
+                   break;
+                }
+                return document.write('false');
+            }
+        }
+
+        
+
+        let banana = ['banana','orange','apple'];
+
+        function getIndex(e,arr){
+            for(let i = 0;i<arr.length;i++){
+                if(arr[i] == e){
+                   document.write(i);
+                   break;
+                }
+            }
+        }
+
+        //调用函数
+        // getBanana();
+        getIndex('apple',banana);
+    </script>
+</body>
+</html>

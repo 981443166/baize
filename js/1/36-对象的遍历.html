@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let product = {
+            //键：值
+            goods:'小米',
+            name:'小米青春版',
+            gender:'男'
+        }
+        //遍历对象
+        for(let k in product){
+            console.log(k);
+            //遍历一定要加总括号才能访问到值，否则就是字符串形式的键
+            console.log(product[k]);
+        }
+    </script>
+</body>
+</html>

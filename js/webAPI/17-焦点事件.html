@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        ul{
+            list-style: none;
+        }
+        body{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        input{
+            width: 200px;
+            height: 30px;
+            margin: 0 auto;
+        }
+        .list{
+            margin-top: 10px;
+        }
+        .list li{
+            border: 1px solid #ff0000;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input type="text" id="box1">
+        <ul class="list">
+            <li>111</li>
+            <li>222</li>
+            <li>333</li>
+        </ul>
+    </div>
+
+    <script>
+        const box1 = document.querySelector('#box1');
+        // 1.获取焦点事件
+        box1.addEventListener('focus', () => {
+            $('.list').show();
+        })
+        // 2.失去焦点事件
+        box1.addEventListener('blur', () => {
+            $('.list').css('display', 'none');
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../js/bootstrap/bootstrap.min.css" />
+  </head>
+  <body>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">序号</th>
+          <th scope="col">姓名</th>
+          <th scope="col">年龄</th>
+          <th scope="col">性别</th>
+          <th scope="col">手机号</th>
+          <th scope="col">地址</th>
+        </tr>
+      </thead>
+      <tbody>
+        <script>
+          //数组对象
+          let student = [
+            {
+              name: "张三",
+              age: 18,
+              gender: "男",
+              phone: "13800000000",
+              address: "中国",
+            },
+            {
+              name: "李四",
+              age: 19,
+              gender: "男",
+              phone: "13800000001",
+              address: "中国",
+            },
+            {
+              name: "王五",
+              age: 20,
+              gender: "男",
+              phone: "13800000002",
+              address: "中国",
+            },
+            {
+              name: "赵六",
+              age: 21,
+              gender: "男",
+              phone: "13800000003",
+              address: "中国",
+            },
+          ];
+          //渲染学生信息表
+          for (let i = 0; i < student.length; i++) {
+            document.write(`
+            <tr>
+              <th scope="row">${i+1}</th>
+              <td>${student[i].name}</td>
+              <td>${student[i].age}</td>
+              <td>${student[i].gender}</td>
+              <td>${student[i].phone}</td>
+              <td>${student[i].address}</td>
+            </tr>
+            `)
+          }
+        </script>
+      </tbody>
+    </table>
+
+    <!-- for (let i = 0; i < student.length; i++) {
+            //输出下标
+            console.log(i);
+            //输出对象
+            console.log(student[i]);
+          } -->
+
+    <script src="../js/bootstrap/bootstrap.min.js"></script>
+  </body>
+</html>

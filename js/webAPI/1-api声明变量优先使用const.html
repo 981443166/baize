@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1. 声明变量优先使用const
+        // 2. 如果变量的值需要改变，才使用let
+        const PI = 3.1415926;
+        console.log(PI);
+
+        //数组和对象可以使用const声明，因为数组和对象是引用类型，指向的内存地址是不变的
+        //只要内存地址不变，就可以使用const声明
+        const arr = [1, 2, 3, 4, 5];
+        console.log(arr);
+
+        const obj = {
+            name: '张三',
+            age: 18,
+            sex: '男'
+        }
+        obj.like = '篮球';
+        console.log(obj);
+    </script>
+</body>
+</html>

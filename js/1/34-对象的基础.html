@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // let 对象名 = {
+        //     属性名:属性值,
+        //     方法名:函数(){
+        //         //方法体
+        //     }
+        // }
+        let product = {
+            goods:'小米',
+            name:'小米青春版',
+            gender:'男',
+            weight:'0.55kg',
+            address:'中国',
+            'phone-name':'12345678'
+        }
+        //访问对象的属性
+        console.log(product);
+        //增加属性
+        product.price = 1999;
+        console.log(product);
+        //删除属性
+        delete product.address;
+        console.log(product);
+        //修改属性值
+        product.weight = '0.6kg';
+        console.log(product);
+        //查看某种属性
+        product.gender = '男';
+        console.log(product);
+        //查看的另一种写法
+        console.log(product['phone-name']);
+    </script>
+</body>
+</html>

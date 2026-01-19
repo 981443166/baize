@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .box{
+            width: 1300px;
+            height: 340px;
+            margin: 100px auto;
+            border: 1px solid red;
+        }
+        .scroll{
+            /* position: relative; */
+            width: 100%;
+            height: 100px;
+        }
+        .box svg{
+            width: 5010px;
+            stroke-dasharray: 5010;
+            stroke-dashoffset: 5010;
+        }
+        .box svg path{
+            animation: move 10s infinite linear;
+        }
+        @keyframes move {
+            0% {
+              stroke-dashoffset:5010;
+            }
+            100% {
+              stroke-dashoffset:0;
+            }
+          }
+        .item{
+            position: absolute;
+            top: 80px;
+            left: 30px;
+            width: 258px;
+            font-size: 14px;
+        }
+        .item img{
+            width: 16px;
+            height: 16px;
+        }
+        .item h5{
+            font-size: 14px;
+            margin-bottom: 5px;
+            margin-top: 15px;
+        }
+        .item1{
+            position: relative;
+            top: 10px;
+            animation: moveItem1 1s linear forwards;
+        }
+        .item2{
+            position: relative;
+            top: -180px;
+            left: 400px;
+            opacity: 0;
+            animation: moveItem2 1s linear forwards .7s;
+        }
+        .item3{
+            position: relative;
+            top: -270px;
+            left: 900px;
+            opacity: 0;
+            /* forwards停留在最后一帧 */
+            animation: moveItem3 1s linear forwards 1.5s;
+        }
+        @keyframes moveItem1 {
+            0% {
+              transform: translateY(0);
+            }
+            100% {
+              transform: translateY(-40px);
+            }
+          }
+        @keyframes moveItem2 {
+            0% {
+              transform: translateY(0);
+            }
+            100% {
+              transform: translateY(20px);
+              opacity: 1;
+            }
+        }
+        @keyframes moveItem3 {
+            0% {
+              transform: translateY(0);
+            }
+            100% {
+              transform: translateY(-50px);
+              opacity: 1;
+            }
+        }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="scroll">
+        <svg
+          class="pc-only absolute left-0 top-0 pc:w-4535px pc:h-301px"
+          viewBox="0 0 4535 301"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            id="line"
+            class="svg-path"
+            opacity="0.2"
+            d="M2 98.3546C177.569 -2.32258 469.504 -49.999 637.698 90.2674C742.655 177.796 841.5 348.045 1112.5 285.447C1296.5 242.945 1377 82.9804 1653.5 18.4478C1967.5 -54.8368 2072 134.055 2258 244.947C2494.5 385.947 2692.5 221.947 2883.5 96.9474C3059.07 -3.73182 3349.5 -49.999 3517.7 90.2674C3622.65 177.796 3721.5 348.045 3992.5 285.447C4176.5 242.945 4257 82.9804 4533.5 18.4478"
+            stroke="url(#paint0_linear_7486_10-1)"
+            stroke-width="3"
+            stroke-linecap="round"
+            style="stroke-dashoffset: 3923.9px"
+          ></path>
+          <defs></defs>
+          <linearGradient
+            id="paint0_linear_7486_10-1"
+            x1="2882.52"
+            y1="125.846"
+            x2="5904.3"
+            y2="125.846"
+            gradientUnits="userSpaceOnUse"
+            class=""
+          >
+            <stop stop-color="#FD5225" class=""></stop>
+            <stop offset="0.177885" stop-color="#FE6916" class=""></stop>
+            <stop offset="0.287032" stop-color="#FF9E06" class=""></stop>
+            <stop offset="0.428304" stop-color="#FEAE01" class=""></stop>
+            <stop offset="0.557692" stop-color="#E97842" class=""></stop>
+            <stop offset="0.67018" stop-color="#D95070" class=""></stop>
+            <stop offset="0.820014" stop-color="#C851E5" class=""></stop>
+            <stop offset="1" stop-color="#4667FD" class=""></stop>
+          </linearGradient>
+        </svg>
+      </div>
+      <div class="item item1">
+        <img src="../img/images-milestone-star-1.png.avif" alt="">
+        <p>2025.8</p>
+        <div>小布助手月活近 1.7 亿，成为国内活跃用户数最多的手机 AI 助手。</div>
+      </div>
+      <div class="item item2">
+        <img src="../img/images-milestone-star-1.png.avif" alt="">
+        <p>2025</p>
+        <h5>升级 AI 战略</h5>
+        <div>OPPO 在 2025 年移动通信大会（MWC2025）期间宣布升级 AI 战略，旨在通过自研创新和开放合作，为全球用户带来全面、安全、持续焕新的 AI 解决方案，成为“AI 体验引领者”。</div>
+      </div>
+      <div class="item item3">
+        <div>OPPO 在 2024 年移动通信大会（MWC2024）期间宣布升级 AI 战略，旨在通过自研创新和开放合作，为全球用户带来全面、安全、持续焕新的 AI 解决方案，成为“AI 体验引领者”。</div>
+        <h5>2024 年 MWC2024 大会</h5>
+        <p>2024</p>
+        <img src="../img/images-milestone-star-1.png.avif" alt="">
+      </div>
+    </div>
+  </body>
+</html>

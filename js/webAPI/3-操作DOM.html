@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box">123</div>
+    <div class="box">456</div>
+    
+    <script>
+        // 1. 获取元素, 多个元素返回第一个
+        const box = document.querySelector('div')
+        console.log(box)
+
+        // 2. 获取元素, 多个元素返回所有,传回的是一个伪数组，有长度,有下标，可以遍历，但是不能使用数组的方法
+        const boxs = document.querySelectorAll('div')
+        console.log(boxs)
+        // 遍历伪数组
+        for(let i = 0; i < boxs.length; i++){
+            console.log(boxs[i])
+        }
+        // 3. 操作元素
+        box.style.backgroundColor = 'red'
+        // innerText 只能操作文本节点，不能操作标签节点
+        // box.innerText = 'hellos'
+        // innerHTML 可以操作文本节点，也可以操作标签节点
+        box.innerHTML = '<em>shello</em>'
+    </script>
+</body>
+</html>

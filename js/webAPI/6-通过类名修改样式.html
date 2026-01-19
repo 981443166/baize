@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrapper{
+            width: 500px;
+            height: 500px;
+            background-color: #42f38c;
+        }
+
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper"></div>
+
+    <script>
+        //1，获取元素
+        const wrapper = document.querySelector('.wrapper')
+        //2，添加类名
+        // wrapper.classList.add('box')  增加一个类名
+        wrapper.classList.remove('box')  //删除一个类名
+        wrapper.classList.toggle('box')  //切换类名，有就删除，没有就添加
+        //修改类名
+        wrapper.className = 'box'   //修改类名，会覆盖之前的类名
+    </script>
+</body>
+</html>

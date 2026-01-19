@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @keyframes move {
+            from {
+                transform: translate3d(0, 0, 0);
+            }
+            to {
+                transform: translate3d(300px, 500px, 0);
+                border-radius: 50%;
+                background-color: red;
+            }
+        }
+        @keyframes move2 {
+            from {
+                transform: translate3d(0, 0, 0);
+            }
+            to {
+                transform: scale3d(100px, 500px, 0);
+                border-radius: 50%;
+                background-color: red;
+            }
+        }
+        .box{
+            width: 300px;
+            height: 300px;
+            background-color: pink;
+            /* infinite无限循环 */
+            /* alternate跑马灯 */
+            /* linear匀速线性运动 */
+            animation: move 2s linear  alternate infinite;
+        }
+        .box2{
+            width: 300px;
+            height: 300px;
+            background-color: pink;
+            animation: move2 2s linear infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <div class="box2"></div>
+</body>
+</html>

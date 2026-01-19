@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="display: flex;justify-content: center;align-items: end;gap: 20px;margin-top: 100px;">
+    <script>
+        // 1. 数据
+        // 根据用户输入的数组数据,生成柱状图
+        // let data = prompt(`请输入数组数据,用逗号隔开`).split(',');
+        // // 2. 生成柱状图
+        // for(let i = 0;i < data.length;i++){
+        //     document.write(`<div style="width: 50px;height: ${data[i]}px;background-color: pink;">${data[i]}</div>`);
+        // }
+
+        let data = []
+        // 2. 生成柱状图
+        for(let i = 1;i <= 4;i++){
+            // 1. 数据
+            data.push(Number(prompt(`请输入第${i}个数据`)));
+            document.write(`<div style="width: 50px;height: ${data[i - 1]}px;background-color: pink;">${data[i - 1]}</div>`);
+        }
+        console.log(data);
+        // document.write(`<div style="width: 50px;height: ${data[i]}px;background-color: pink;">${data[i]}</div>`);
+    </script>
+</body>
+</html>

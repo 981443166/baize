@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        h3{
+            margin: 10px 0;
+        }
+        .green{
+            color: #fff;
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            background-color: green;
+        }
+        .red{
+            color: #fff;
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            background-color: red;
+        }
+        .blue{
+            color: #fff;
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            background-color: blue;
+        }
+        .pink{
+            color: #fff;
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            margin: 10px 0;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <h3>remove()方法删除元素</h3>
+    <h3>detach()方法删除元素</h3>
+    <div class="green">女生</div>
+    <div class="red">男生</div>
+    <div class="blue">
+        <span>小鲜肉</span>
+    </div>
+
+    <!-- 遍历元素 -->
+    <!-- .each()方法遍历元素 -->
+    <div class="pink">123</div>
+    <div class="pink">456</div>
+    <div class="pink">789</div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        // 删除元素
+        // 1-remove()方法删除元素
+        $('.red').remove()
+        // 2-detach()方法删除元素
+        $('.blue').detach()
+        // 3-清空元素内容
+        $('.green').empty()
+
+        // 遍历元素
+        // .each()方法遍历元素
+        $('.pink').each((index, element) => {
+            console.log(index);
+            console.log(element);
+            console.log(this);
+            console.log($(this));
+        })
+    </script>
+</body>
+</html>

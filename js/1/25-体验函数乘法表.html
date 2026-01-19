@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      span {
+        display: inline-block;
+        width: 90px;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+        border: 1px solid #353535;
+        box-shadow: 5px 5px 8px #919191;
+        margin: 5px;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      //创建一个函数，用于打印99乘法表
+      function sheet99() {
+        for (let i = 1; i <= 9; i++) {
+          for (let j = 1; j <= i; j++) {
+            document.write(`<span>${i} * ${j} = ${i * j}</span>`);
+          }
+          document.write("<br>");
+        }
+      }
+
+      // 调用函数
+      sheet99();
+      sheet99();
+      sheet99();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 生成1-100之间的随机整数
+      function getRandomInt(N, M) {
+        return parseInt(Math.random() * (M - N + 1)) + N;
+      }
+
+      let randomNum = getRandomInt(1, 10);
+
+      while (true) {
+        let userNum = parseInt(prompt("请输入1-10之间的整数"));
+        if (userNum > randomNum) {
+          alert("你猜的数字太大了");
+        } else if (userNum < randomNum) {
+          alert("你猜的数字太小了");
+        } else {
+          alert("恭喜你猜对了");
+          break;
+        }
+      }
+    </script>
+  </body>
+</html>

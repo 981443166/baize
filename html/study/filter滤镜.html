@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .box{
+            width: 300px;
+            height: 400px;
+            margin: 0 auto;
+            transform: translate(-50%);
+            /* 高斯模糊 */
+            /* filter: blur(5px); */
+            /* 饱和度 */
+            /* filter: saturate(200%); */
+            /* 对比度 */
+            /* filter: contrast(200%); */
+            /* 亮度 */
+            /* filter: brightness(200%); */
+            /* 色相 */
+            /* filter: hue-rotate(360deg); */
+            /* 反相 */
+            /* filter: invert(1); */
+            /* 复古 */
+            /* filter: sepia(1); */
+            /* 混合模式 */
+            /* filter: mix-blend-mode(overlay); */
+            /* 颜色矩阵 */
+            /* filter: color-matrix(
+                1 0 0 0 0
+                0 1 0 0 0
+                0 0 1 0 0
+                0 0 0 1 0
+            ); */
+            /* 灰度 */
+            /* filter: grayscale(1); */
+            /* 阴影 */
+            filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+        }
+        .box img{
+            width: 100%;
+            height: 100%;
+            border-radius: 10%;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <img src="../img/彭于晏.png" alt="">
+    </div>
+</body>
+</html>

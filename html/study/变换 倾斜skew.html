@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .box{
+            width: 200px;
+            height: 100px;
+            background-color: pink;
+            margin: 500px auto;
+            text-align: center;
+            line-height: 100px;
+       
+            /* 变换： 倾斜 */
+         
+            transform: skewx(-16deg);
+            background-color: black;
+            color: #fff;
+            font-family: "Roboto", sans-serif;
+            font-size: 22px;
+        }
+            .box:hover{
+                transform: color 1s;
+                background-color: #fff;
+                color: black;
+            }   
+       
+        .card{
+            position: relative;
+            width: 240px;
+            height: 280px;
+            margin: 50px;
+        }
+        .card div{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 240px;
+            height: 280px;
+            border-radius: 0px 30px 40px 40px;
+            transform-origin: left top;
+            transition: all .3s;
+        }
+        .card .first{
+            z-index: 1;
+            background-color: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(30px);
+        }
+        .card .back{
+            background-color: purple;
+            transform: skewY(8deg);
+        }
+        .card:hover .first{
+            transform: translateY(-3px);
+        }
+        .card:hover .back{
+            transform: skewY(16deg);
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        预&nbsp;约&nbsp;游&nbsp;戏
+    </div>
+    <div class="card">
+        <div class="first"></div>
+        <div class="back"></div>
+    </div>
+</body>
+</html>

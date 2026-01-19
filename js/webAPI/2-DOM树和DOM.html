@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box">
+        <p>hello world</p>
+    </div>
+    <script>
+        //DOM(文档对象模型) BOM(浏览器对象模型)，DOM操作可以改变页面的内容、结构和样式，而BOM操作可以改变浏览器的行为，比如改变浏览器的地址栏、打开新的窗口、改变浏览器的标题等。
+        // 1. DOM树，根节点是document对象
+        // document.write('hello world');
+
+        //在html里面叫做标签，在DOM里面叫做对象
+        const div = document.querySelector('div');
+        //dir可以查看对象的所有属性和方法
+        console.dir(div);
+    </script>
+</body>
+</html>

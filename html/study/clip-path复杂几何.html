@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+            background-color: pink;
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+        }
+        .box img{
+            position: absolute;
+            top: -16rem;
+            left: 18rem;
+            transform: scale(0.5);
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <img src="../img/彭于晏.png" alt="">
+    </div>
+</body>
+</html>

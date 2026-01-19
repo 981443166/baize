@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        ul{
+            max-width: 1200px;
+            margin: 30px auto;
+            text-align: center;
+        }
+        ul li{
+            height: 50px;
+            width: 200px;
+            line-height: 50px;
+            text-align: center;
+            background-color: pink;
+            /* 去除li的默认样式 */
+            list-style: none;
+            margin-bottom: 30px;
+            /* 不允许盒子跨栏 */
+            break-inside: avoid-column;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li style="cursor: default;">默认default</li>
+        <li style="cursor: pointer;">指针pointer</li>
+        <li style="cursor: move;">移动move</li>
+        <li style="cursor: text;">文本text</li>
+        <li style="cursor: wait;">等待wait</li>
+        <li style="cursor: help;">帮助help</li>
+        <li style="cursor: not-allowed;">不允许not-allowed</li>
+        <li style="cursor: vertical-text;">垂直文本vertical-text</li>
+        <li style="cursor: crosshair;">十字光标crosshair</li>
+    </ul>
+</body>
+</html>

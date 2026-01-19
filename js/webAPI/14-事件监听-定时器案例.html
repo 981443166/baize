@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            height: 100vh;
+        }
+        .container{
+            width: 500px;
+            height: 200px;
+            margin: 0 auto;
+            padding: 20px;
+            transform: translateY(50%);
+            background-color: #ccc;
+            border-radius: 10px;
+            
+        }
+        .name-box{
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .name{
+            color: red;
+        }
+        h2{
+            text-align: center;
+        }
+        p{
+            margin-top: 20px;
+        }
+        .btns{
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+            gap: 20px;
+        }
+        .btns button{
+            margin-right: 10px;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>定时器案例</h2>
+        <div class="name-box">
+            <p>接下来的名字是:</p>
+            <p class="name">刘备</p>
+        </div>
+        <div class="btns">
+            <button class="start">开始</button>
+            <button class="end">结束</button>
+        </div>
+    </div>
+
+
+    <script>
+        const arr = ["刘备","关羽","张飞","赵云","黄忠","马超","魏延"]
+
+        // 1.获取元素
+        const start = document.querySelector(".start")
+        const name = document.querySelector(".name")
+        //定义一个变量,用来存储定时器的id
+        let timer = 0
+        // 定义一个变量,用来存储随机数
+        let random = 0
+        // 2.添加事件监听
+        start.addEventListener("click",() => {
+            timer = setInterval(() => {
+            //生成随机数
+            random = parseInt(Math.random() * arr.length)
+            // 随机取出数组中的一个元素,显示在.name-box中
+            name.innerHTML = arr[random]
+            },100)
+
+            //当数组还有一个元素时,禁用两个按钮
+            if(arr.length === 1){
+                // start.disabled = true
+                // end.disabled = true
+                start.disabled = end.disabled = true
+            }
+        })
+
+        // 3.获取结束按钮
+        const end = document.querySelector(".end")
+        // 4.添加事件监听
+        end.addEventListener("click",() => {
+            // 点击结束按钮,定时器停止执行
+            clearInterval(timer)
+            // 点击结束按钮,将所选的名字清空
+            arr.splice(random,1)
+            console.log(arr);
+            
+        })
+    </script>
+</body>
+</html>

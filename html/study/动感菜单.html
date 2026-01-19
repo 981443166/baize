@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      ul {
+        list-style: none;
+      }
+      body {
+        background: #fbc2eb;
+      }
+      .nav {
+        width: 250px;
+        height: 50px;
+        background-color: #fff;
+        position: fixed;
+        top: 50px;
+        left: 50px;
+        z-index: 999;
+        line-height: 50px;
+      }
+      .toggle {
+        text-align: center;
+        line-height: 50px;
+        font-size: 20px;
+        cursor: pointer;
+      }
+      ul{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+      }
+      .nav ul li {
+        height: 50px;
+        line-height: 50px;
+        position: relative;
+        text-align: center;
+        background-color: #fff;
+        font-size: 20px;
+        margin-top: 1px;
+        opacity: 0;
+        transform: translateX(-250px);
+        transition: all 0.2s;
+        transition-delay: calc(var(--i) * 0.1s);
+      }
+     .nav:hover  ul li {
+        opacity: 1;
+        color: #ff0000;
+        transform: translateX(0);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="nav">
+      <div class="toggle">菜单</div>
+      <ul>
+        <li style="--i:0;">首页</li>
+        <li style="--i:1;">关于我们</li>
+        <li style="--i:2;">产品中心</li>
+        <li style="--i:3;">联系我们</li>
+      </ul>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" class="transition-colors duration-300">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neumorphic Navigation</title>
+    <!-- 引入tailwindcss -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- 引入Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- 引入GSAP动画库 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <style>
+        /* 新拟态风格的基础样式 */
+        .neumorphic {
+            box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.1),
+                        -8px -8px 16px rgba(255, 255, 255, 0.7);
+            transition: all 0.3s ease;
+        }
+        
+        .neumorphic-inset {
+            box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.1),
+                        inset -4px -4px 8px rgba(255, 255, 255, 0.7);
+            transition: all 0.3s ease;
+        }
+        
+        /* 暗黑模式下的新拟态样式 */
+        .dark .neumorphic {
+            box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.3),
+                        -8px -8px 16px rgba(255, 255, 255, 0.05);
+        }
+        
+        .dark .neumorphic-inset {
+            box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.3),
+                        inset -4px -4px 8px rgba(255, 255, 255, 0.05);
+        }
+        
+        /* 切换按钮动画 */
+        .toggle-btn {
+            transition: all 0.3s ease;
+        }
+        
+        .toggle-btn.active {
+            transform: translateX(24px);
+        }
+        
+        /* 确保所有元素都有过渡效果 */
+        * {
+            transition: color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        /* 加载界面样式 */
+        #loader {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .loader-content {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        #loader-bar {
+            width: 0%;
+        }
+        
+        /* 确保主内容在加载完成前不可见 */
+        nav, main {
+            opacity: 0;
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body class="bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 transition-colors duration-300">
+    <!-- 加载界面 -->
+    <div id="loader" class="fixed inset-0 bg-gray-200 dark:bg-gray-800 z-50 flex items-center justify-center">
+        <div class="loader-content">
+            <div class="neumorphic bg-gray-200 dark:bg-gray-800 rounded-full w-32 h-32 flex items-center justify-center mb-8">
+                <i class="fas fa-code text-3xl text-blue-500" id="loader-icon"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-center" id="loader-text">Neumorphic UI</h2>
+            <div class="neumorphic-inset bg-gray-200 dark:bg-gray-800 rounded-full w-64 h-4 mt-8 overflow-hidden">
+                <div id="loader-bar" class="h-full bg-blue-500 rounded-full"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 导航栏 -->
+    <nav class="neumorphic bg-gray-200 dark:bg-gray-800 rounded-xl mx-4 my-4 p-4 flex items-center justify-between">
+        <!-- Logo -->
+        <div class="flex items-center">
+            <div class="neumorphic bg-gray-200 dark:bg-gray-800 rounded-full w-12 h-12 flex items-center justify-center mr-4">
+                <i class="fas fa-code text-xl text-blue-500"></i>
+            </div>
+            <h1 class="text-xl font-bold">Neumorphic UI</h1>
+        </div>
+        
+        <!-- 导航菜单 -->
+        <div class="hidden md:flex items-center space-x-6 hover:scale-105 transition-transform duration-300">
+            <a href="#" class="neumorphic bg-gray-200 dark:bg-gray-800 px-4 py-2 rounded-lg hover:neumorphic-inset transition-all duration-300">Home</a>
+            <a href="#" class="neumorphic bg-gray-200 dark:bg-gray-800 px-4 py-2 rounded-lg hover:neumorphic-inset transition-all duration-300">About</a>
+            <a href="#" class="neumorphic bg-gray-200 dark:bg-gray-800 px-4 py-2 rounded-lg hover:neumorphic-inset transition-all duration-300">Services</a>
+            <a href="#" class="neumorphic bg-gray-200 dark:bg-gray-800 px-4 py-2 rounded-lg hover:neumorphic-inset transition-all duration-300">Contact</a>
+        </div>
+        
+        <!-- 右侧功能区 -->
+        <div class="flex items-center space-x-4">
+            <!-- 暗黑模式切换按钮 -->
+            <div class="neumorphic bg-gray-200 dark:bg-gray-800 rounded-full w-14 h-8 p-1 flex items-center cursor-pointer" id="darkModeToggle">
+                <div class="toggle-btn bg-gray-300 dark:bg-yellow-400 rounded-full w-6 h-6"></div>
+            </div>
+            
+            <!-- 头像 -->
+            <div class="neumorphic bg-gray-200 dark:bg-gray-800 rounded-full w-10 h-10 overflow-hidden">
+                <img src="https://picsum.photos/id/1005/200/200" alt="User Avatar" class="w-full h-full object-cover">
+            </div>
+        </div>
+    </nav>
+    
+    <!-- 主内容区 -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- 主内容区域为空 -->
+    </main>
+    
+    <script>
+        // 暗黑模式切换功能
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const toggleBtn = darkModeToggle.querySelector('.toggle-btn');
+        const html = document.documentElement;
+        
+        // 检查本地存储中的主题偏好
+        if (localStorage.getItem('darkMode') === 'true' || 
+            (!localStorage.getItem('darkMode') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+            toggleBtn.classList.add('active');
+        }
+        
+        // 切换暗黑模式
+        darkModeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            toggleBtn.classList.toggle('active');
+            
+            // 保存主题偏好到本地存储
+            localStorage.setItem('darkMode', html.classList.contains('dark'));
+        });
+        
+        // GSAP加载动画
+        window.addEventListener('DOMContentLoaded', () => {
+            // 获取元素
+            const loader = document.getElementById('loader');
+            const loaderIcon = document.getElementById('loader-icon');
+            const loaderText = document.getElementById('loader-text');
+            const loaderBar = document.getElementById('loader-bar');
+            const nav = document.querySelector('nav');
+            const main = document.querySelector('main');
+            
+            // 创建时间线
+            const tl = gsap.timeline({
+                onComplete: () => {
+                    // 加载完成后显示主内容
+                    gsap.to([nav, main], {
+                        opacity: 1,
+                        visibility: 'visible',
+                        duration: 0.8,
+                        ease: 'power2.out',
+                        stagger: 0.2
+                    });
+                }
+            });
+            
+            // 初始状态
+            gsap.set(loaderIcon, { scale: 0, rotation: 0 });
+            gsap.set(loaderText, { opacity: 0, y: 20 });
+            gsap.set(loaderBar, { width: 0 });
+            
+            // 加载动画序列
+            tl.to(loaderIcon, {
+                scale: 1,
+                rotation: 360,
+                duration: 1,
+                ease: 'back.out(1.7)'
+            })
+            .to(loaderText, {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: 'power2.out'
+            }, '-=0.5')
+            .to(loaderBar, {
+                width: '100%',
+                duration: 2,
+                ease: 'power2.inOut'
+            })
+            .to(loaderIcon, {
+                rotation: 720,
+                duration: 1,
+                ease: 'power2.out'
+            }, '-=1')
+            .to(loader, {
+                opacity: 0,
+                visibility: 'hidden',
+                duration: 0.8,
+                ease: 'power2.inOut'
+            });
+        });
+    </script>
+</body>
+</html>

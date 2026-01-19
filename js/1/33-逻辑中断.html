@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function getSum(a,b){
+            a = a || 0;
+            b = b || 0;
+            console.log(a+b);
+        }
+        //调用函数                                                                                                     
+        getSum(10,20);
+        getSum();
+        //逻辑中断:当&&前面的表达式为false时,不会执行&&后面的表达式
+        console.log(false && getSum());
+        console.log(11 && 22); //逻辑与的时候,如果前面的表达式为true,则返回后面的表达式
+        console.log(11 || 22); //逻辑或的时候,如果前面的表达式为true,则返回前面的表达式
+        
+    </script>
+</body>
+</html>

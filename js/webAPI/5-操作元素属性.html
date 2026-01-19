@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <img src="../综合案例/img/course01.png" alt="">
+    <div class="wrapper"></div>
+    
+    <script>
+        //更改图片
+        // const img = document.querySelector('img')
+        // img.src = '../综合案例/img/course02.png'
+
+                            
+        //随机图片
+        function getRandomImg(N,M){
+            const random = Math.floor(Math.random() * (M - N + 1) + N)
+            return random
+        }
+        //1，获取元素
+        const img = document.querySelector('img')
+        //2，调用函数
+        const random = getRandomImg(1,5)
+        //3，将随机数赋值给图片
+        img.src = `../综合案例/img/course0${random}.png`
+
+
+        //样式属性操作
+        const div = document.querySelector('.wrapper')
+        div.style.backgroundColor = 'red'
+        div.style.width = '400px'
+        div.style.height = '300px'
+    </script>
+</body>
+</html>

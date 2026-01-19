@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        操作元素的属性
+            属性的分类：
+                1：标准属性：如id、class、name、value等
+                2：自定义属性：data-开头的属性
+            获取属性：
+                1：.attr(属性名)
+                2：.prop(属性名)
+                如果是标准属性，attr(),prop()均可获得，推荐使用.prop()方法获取属性值
+                如果是自定义属性，attr()可以获得，prop()不可以获得
+                如果是返回值是boolean类型的属性，设置了属性，attr()返回具体的值，prop()返回true，未设置属性，attr()返回undefined，prop()返回false，推荐使用prop()方法获取属性值
+            设置属性：
+                1：.attr(属性名，属性值)
+                2：.prop(属性名，属性值)
+            移除属性：
+                removeAttr(属性名)
+                removeProp(属性名)
+    -->
+
+    <input type="checkbox" name="ch" checked="checked" value="1" id="box1" data-abc="123">1
+    <input type="checkbox" name="ch1" value="2" id="box2">2
+
+
+    <script src="./jquery.js"></script>
+    <script>
+        //标准属性
+        let box1 = $('#box1').attr('name');
+        console.log(box1);
+        let box2 = $('#box1').prop('name');
+        console.log(box2);
+        //返回值是boolean类型(元素设置了属性)
+        let ck1 = $('#box1').attr('checked'); //checked
+        console.log(ck1);
+        let ck2 = $('#box1').prop('checked'); //true
+        console.log(ck2);
+        //返回值是boolean类型(元素没有设置属性)
+        let ck3 = $('#box2').attr('checked'); //undefined
+        console.log(ck3);
+        let ck4 = $('#box2').prop('checked'); //false
+        console.log(ck4);
+        //自定义属性
+        let data1 = $('#box1').attr('data-abc'); //123
+        console.log(data1);
+        let data2 = $('#box1').prop('data-abc'); //undefined
+        console.log(data2);
+
+        //设置属性
+        //标准属性
+        $('#box1').attr('name','ch2');
+        console.log($('#box1').attr('name'));
+        $('#box1').prop('name','ch3');
+        console.log($('#box1').prop('name'));
+
+        //返回值是boolean类型的属性
+        $('#box1').attr('checked','checked'); //checked,选中;未设置属性，返回undefined
+        $('#box2').prop('checked',true); //true,选中;false,未选中
+
+        //自定义属性
+        $('#box1').attr('data-name','456'); //可以添加属性
+        $('#box2').prop('data-name','789'); //不能添加属性
+
+        //移除属性
+        $('#box1').removeAttr('data-name');
+
+
+    </script>
+
+
+</body>
+</html>

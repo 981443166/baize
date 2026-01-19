@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .box{
+            position: absolute;
+            top: 20%;
+            left: 38%;
+            overflow: hidden;
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            border-radius: 500px;
+            text-align: center;
+            /* 变换： 过渡 */
+            transition: all 1s;
+        }
+        .box img{
+            position: relative;
+            top: 250px;
+            left: 40%;
+            transform:translate(-50%, -50%) scale(0.5);
+        } 
+        .box:hover{
+            transform:translateX(300px) rotate(360deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <img src="../img/彭于晏.png" alt="彭于晏">
+    </div>
+</body>
+</html>

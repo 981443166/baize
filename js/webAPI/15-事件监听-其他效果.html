@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            height: 100vh;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            margin: 0 auto;
+            padding: 20px;
+            transform: translateY(50%);
+            border-radius: 10px;
+        }
+        input{
+            display: flex;
+            margin: 100px auto;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <input type="text" placeholder="请输入内容">
+
+    <script>
+        const div = document.querySelector("div")
+        div.addEventListener("mouseenter",() => {
+            console.log("鼠标进入了div");
+        })
+        div.addEventListener("mouseleave",() => {
+            console.log("鼠标离开了div");
+        })
+        const input = document.querySelector("input")
+        input.addEventListener("focus",() => {
+            console.log("输入框获得了焦点");
+        })
+        input.addEventListener("blur",() => {
+            console.log("输入框失去了焦点");
+        })
+        input.addEventListener("keydown",() => {
+            console.log("键盘按下了");
+        })
+        input.addEventListener("keyup",() => {
+            console.log("键盘松开了");
+        })
+        
+    </script>
+</body>
+</html>

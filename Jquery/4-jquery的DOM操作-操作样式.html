@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .active{
+            color: green;
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1">
+        我是一个div
+    </div>
+
+    <script src="./jquery.js"></script>
+    <script>
+        // 操作样式
+        // 1.添加类名
+        $('#div1').addClass('active');
+        // 2.移除类名
+        $('#div1').removeClass('active');
+        // 3.切换类名
+        $('#div1').toggleClass('active');
+        // 4.判断是否有类名
+        let bool = $('#div1').hasClass('active');
+        console.log(bool);
+        // 5.添加具体的样式
+        $('#div1').css('color', 'red');
+    </script>
+</body>
+</html>

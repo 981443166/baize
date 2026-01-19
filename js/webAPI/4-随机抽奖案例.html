@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrapper{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(45deg, #42f38c, #00d636);
+            width: 500px;
+            height: 500px;
+            margin: 0 auto;
+            margin-top: 350px;
+            border-radius: 10%;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>一等奖：<span id="first">11</span></h1>
+        <h1>二等奖：<span id="second">1</span></h1>
+        <h1>三等奖：<span id="third">1</span></h1>
+    </div>
+    
+    <script>
+        //1，声明一个数组，存储所有的用户
+        const arr = ['张三','李四','王五','赵六','王二','麻子']
+        //2，随机抽取一个用户
+        const random = Math.floor(Math.random() * arr.length)
+        //3，获取元素
+        const first = document.getElementById('first')
+        const second = document.getElementById('second')
+        const third = document.getElementById('third')
+        //4，将随机抽取的用户赋值给一等奖
+        first.innerHTML = arr[random]
+        arr.splice(random,1)
+        console.log(arr);
+        //5，抽取二等奖
+        const random2 = Math.floor(Math.random() * arr.length)
+        second.innerHTML = arr[random2]
+        arr.splice(random2,1)
+        console.log(arr);
+        //6，抽取三等奖
+        const random3 = Math.floor(Math.random() * arr.length)
+        third.innerHTML = arr[random3]
+        arr.splice(random3,1)
+        console.log(arr);
+
+    </script>
+</body>
+</html>

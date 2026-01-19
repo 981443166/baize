@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #979797;
+        }
+        .btn{
+            width: 150px;
+            height: 50px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <button class="btn">点击我</button>
+
+    <script src="../jquery.js"></script>
+    <script>
+        const btn = document.querySelector(".btn")
+        // btn.addEventListener("click",() => {
+        //     console.log("点击了按钮")
+        // })
+        btn.addEventListener("click",() => {
+            alert("点击了按钮")
+        })
+
+        $(document).ready(() => {
+            $(".btn").bind("click",() => {
+                console.log("点击了按钮");
+            })
+        })
+    </script>
+</body>
+</html>

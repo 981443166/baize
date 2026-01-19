@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        textarea{
+            width: 300px;
+            height: 200px;
+            margin-left: 50%;
+            transform: translateX(-50%);
+            margin-top: 120px;
+        }
+        button{
+            margin-left: 50%;
+            transform: translateX(-50%);
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <textarea name="textarea" id="" cols="30" rows="10">
+        用户注册协议：用户注册协议：用户注册协议：用户注册协议：用户注册协议：用户注册协议：用户注册协议：用户注册协议：用户注册协议：用户注册协议：用户注册协议：
+    </textarea>
+    <br>
+    <button class="btn" disabled="true">同意协议(5)</button>
+    
+
+    <script>
+        const btn = document.querySelector('.btn');
+        let time = 5;
+        const timer = setInterval(() => {
+            time--;
+            btn.innerHTML = `同意协议(${time})`;
+            if(time === 0){
+                clearInterval(timer);
+                btn.innerHTML = '同意协议';
+                btn.disabled = false;
+            }
+        }, 1000);
+    </script>
+</body>
+</html>

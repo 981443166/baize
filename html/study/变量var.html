@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        a{
+            list-style: none;
+            text-decoration: none;
+            color: #333;
+        }
+        /* 全局变量 */
+        :root{
+            --color: red;
+        }
+        .box{
+            width: 200px;
+            height: 200px;
+            color: var(--color);
+            text-align: center;
+            line-height: 200px;
+            font-size: 23px;
+            border: 1px solid var(--color);
+        }
+        .nav{
+            --fz: 20px;
+        }
+        .nav a:hover{
+            color: var(--color);
+            font-size: var(--fz);
+        }
+    </style>
+</head>
+<body>
+    <div class="box">文字内容</div>
+    <div class="nav">
+        <ul>
+            <li><a href="#">首页</a></li>
+            <li><a href="#">列表</a></li>
+            <li><a href="#">关于</a></li>
+        </ul>
+    </div>
+</body>
+</html>

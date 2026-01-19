@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        h3{
+            margin: 10px 0;
+        }
+        .green{
+            color: #fff;
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            background-color: green;
+        }
+        .red{
+            color: #fff;
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            background-color: red;
+        }
+        .blue{
+            color: #fff;
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h3>prepend()方法前追加内容</h3>
+    <h3>prependTo()方法前追加内容</h3>
+    <h3>append()方法后追加内容</h3>
+    <h3>appendTo()方法后追加内容</h3>
+    <h3>before()方法前追加内容</h3>
+    <h3>after()方法后追加内容</h3>
+    <div class="green">女生</div>
+    <div class="red">男生</div>
+    <div class="blue">
+        <span>小鲜肉</span>
+    </div>
+
+
+    <script src="./jquery.js"></script>
+    <script>
+        // 创建元素
+        let p = '<p>hello world</p>'
+        console.log(p) //字符串形式的<p>hello world</p>
+        console.log($(p)) //jquery对象形式的<p>hello world</p>
+
+        // 添加元素
+        // 在添加元素时，如果本元素不存在（新建的元素），则会自动创建。如果本元素存在（已有元素），则会在本元素的内部添加内容。
+        // 1-指定内容.prepend()                 在指定元素的内部最前面添加内容，内容可以是字符串，html元素，jquery对象
+        let span = '<span>hello</span>'
+        $('.green').prepend(span)
+        // 2-$(内容).prependTo(指定元素)         在指定元素的内部最前面添加内容，内容可以是字符串，html元素，jquery对象
+        // $(span).prependTo('.red')
+        // 1-指定内容.append()                 在指定元素的内部最后面添加内容，内容可以是字符串，html元素，jquery对象
+        $('.blue').append(span)
+        // 2-$(内容).appendTo(指定元素)         在指定元素的内部最后面添加内容，内容可以是字符串，html元素，jquery对象
+        // $(span).appendTo('.blue')
+        // 1-指定内容.before()                 在指定元素的前面添加内容，内容可以是字符串，html元素，jquery对象
+        $('.red').before(span)
+        // 2-指定内容.after()                 在指定元素的后面添加内容，内容可以是字符串，html元素，jquery对象
+        $('.red').after(span)
+    </script>
+</body>
+</html>

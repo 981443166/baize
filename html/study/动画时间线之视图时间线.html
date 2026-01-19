@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            height: 3500px;
+        }
+        .box{
+            position: sticky;
+            top: 300px;
+            width: 1300px;
+            height: 500px;
+            margin: 1000px auto 0;
+        }
+        .box p{
+            font-size: 30px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .box img{
+            /* 透明度opacity */
+            opacity: 0.2;
+            transform: scale(0.3);
+            animation: anim 2s linear forwards;
+            /* 绑定视图时间线 */
+            animation-timeline: view();
+        }
+        .box .img1{
+            position: absolute;
+            top: -450px;
+            left: 0;
+        }
+        .box .img2{
+            position: absolute;
+            top: -100px;
+            right: 0;
+        }
+        @keyframes anim {
+            0% {
+               transform: scale(0.3);
+               opacity: 0.2;
+            }
+            100% {
+                transform: scale(0.6);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <p>Hello World</p>
+        <img src="../img/彭于晏.png" alt="" class="img1">
+        <img src="../img/彭于晏.png" alt="" class="img2">
+    </div>
+</body>
+</html>

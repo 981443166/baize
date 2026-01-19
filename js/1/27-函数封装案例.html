@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //封装一个函数，求之间和
+        // function getSum(){
+        //     let sum = 0;
+        //     let userNum = Number(prompt("请输入一个数字"));
+        //     for(let i = 1;i <= userNum;i++){
+        //         sum += i;
+        //     }
+        //     alert(sum);
+        // }
+
+        // 调用函数
+        // getSum();
+
+        // 函数传参,num1,num2为形式参数,调用函数时传入的实际参数为100,200
+        // 函数体内部使用num1,num2进行计算
+        //参数默认值：如果调用函数时没有传入实际参数，使用默认值 num1 = 1,num2 = 100类似
+        // function getSum(num1,num2){
+        //     let sum = 0;
+        //     for(let i = num1;i <= num2;i++){
+        //         sum += i;
+        //     }
+        //     alert(sum);
+        // }
+        // // 调用函数，传入100,200作为实际参数
+        // getSum(100,200);
+
+
+        // 封装一个函数数组，求数组之间的和
+        function getArraySum(arr){
+            let sum = 0;
+            for(let i = 0;i < arr.length;i++){
+                sum += arr[i];
+            }
+            alert(sum);
+        }
+
+        let arr = [1,2,3,4,5];
+        // 调用函数，传入数组arr作为实际参数
+        getArraySum(arr);
+    </script>
+</body>
+</html>

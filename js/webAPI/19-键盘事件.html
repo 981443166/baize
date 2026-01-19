@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="input">
+
+    <script src="../jquery.js"></script>
+    <script>
+        // 1. 键盘事件
+        // const input = document.querySelector('input');
+        // input.addEventListener('keydown',() => {
+        //     console.log('keydown');
+        // })
+        // input.addEventListener('keyup',() => {
+        //     console.log('keyup');
+        // })
+        // 2.用户输入文本事件 input
+        // input.addEventListener('input',() => {
+        //     console.log(input.value);
+        // })
+        // 3.key press 事件
+        // input.addEventListener('keypress',(e) => {
+        //     console.log(e.key);
+        // })
+
+
+        //通过jQuery实现
+        $('#input').on('keydown', (e) => {
+            console.log(e.key);
+        });
+        $('#input').on('keyup', (e) => {
+            console.log(e.key);
+        });
+        // 4. 输入文本事件 input
+        $('#input').on('input', (e) => {
+            console.log(e.target.value);
+        });
+    </script>
+</body>
+</html>

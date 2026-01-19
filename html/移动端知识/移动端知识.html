@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            /* 在移动端，单位需要使用vw、vh、vmin、vmax等单位，而不是px。否则会导致元素在不同屏幕尺寸下显示不同。 */
+            width: 26.6667vw;
+            height: 26.6667vw;
+            /* px转换为vw、vh、vmin、vmax单位 公式：px / 屏幕宽度（或高度） * 100 */
+            /* width: 83.475px;
+            height: 83.475px; */
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

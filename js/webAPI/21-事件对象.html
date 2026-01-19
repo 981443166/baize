@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">点击我</button>
+    <input type="text" id="input">
+    <script>
+        // const btn = document.querySelector('#btn')
+        // btn.addEventListener('click',(e) => {
+        //     console.log(e)
+        // })
+    </script>
+
+    <script>
+        const input = document.querySelector('#input')
+        input.addEventListener('keyup',(e) => {
+            // 当用户松开键盘上的任意键时触发
+            // console.log(e.key)
+            // 当用户输入的内容为a时，将输入框的内容设置为A
+            if(e.key === 'a'){
+                console.log('用户输入了a');
+            }
+        })
+    </script>
+
+
+
+    <script src="../jquery.js"></script>
+    <script>
+        //jquery事件对象
+        $('#input').keyup(function (e) { 
+            // 当用户松开键盘上的任意键时触发
+            // console.log(e.key)
+            // 当用户输入的内容为a时，将输入框的内容设置为A
+            if(e.key === 'a'){
+                console.log('用户输入了a');
+            }
+        });
+    </script>
+</body>
+</html>

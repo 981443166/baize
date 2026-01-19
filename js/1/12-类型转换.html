@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 类型转换 js默认是字符串类型
+        // 1. 隐式类型转换
+        let a = 10;
+        let c = 10;
+        let b = '20';
+        console.log(a + b); // 1020  string
+        console.log(a + c); // 20
+        console.log(typeof (a + b)); // string
+        console.log(+12); // 12 number
+        console.log(+'12'); // 12 number  加号可以转换为数字类型
+
+        // 加号两边有一个是字符串类型，就会转换为字符串类型
+        console.log(a + '12'); // 1012
+        console.log('12' + c); // 1210
+        // 除了加号，比如减号、乘号、除号会转换为数字类型                                                                                                 
+        console.log(a - b); // -10 number
+        console.log(a * b); // 200 number
+        console.log(a / b); // 0.5 number
+        
+        // 2. 显式类型转换 强制类型转换
+        console.log(Number(b) + a); // 30
+        console.log(typeof (Number(b))); // number
+
+        //第二种显示类型转换
+        let num = Number(prompt('请输入一个数字'));
+        console.log(num);
+        console.log(typeof num);
+        // 注意：如果输入的内容不能转换为数字，就会返回NaN
+        console.log(Number('12a')); // NaN
+        //第三种显示类型转换
+        let num2 = +prompt('请输入一个数字'); // 加号可以转换为数字类型
+        console.log(num2);
+        console.log(typeof num2);
+
+        //parseInt() 可以将字符串转换为整数
+        console.log(parseInt('12')); // 12
+        console.log(parseInt('12a')); // 12  会自动去掉后面的非数字字符
+        console.log(parseInt('a12')); // NaN
+        // parseFloat() 可以将字符串转换为浮点数
+        console.log(parseFloat('12.34')); // 12.34
+        console.log(parseFloat('12.34a')); // 12.34  会自动去掉后面的非数字字符
+        console.log(parseFloat('a12.34')); // NaN
+    </script>
+</body>
+</html>

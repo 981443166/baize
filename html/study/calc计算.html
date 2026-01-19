@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calc计算</title>
+    <style>
+        :root{
+            --gap: 20px;
+        }
+        .box{
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--gap);
+            width: 1000px;
+            margin: 100px auto;
+        }
+        .item{
+            /* width: 33.3333%; */
+            width: calc(33.33333% - var(--gap));
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+        <div class="item">6</div>
+    </div>
+</body>
+</html>

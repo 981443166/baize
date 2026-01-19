@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 语法：
+        // while(条件){
+        //     循环体
+        // }
+        // 解释：当条件为true时，执行循环体，否则退出循环
+
+        // let i = 0;
+        // while(i < 5){
+        //     console.log(i);
+        //     i++;
+        // }
+
+        // 案列1：输出1到100
+        // let i = 1;
+        // while(i < 100){
+        //     console.log(i);
+        //     i++;
+        // }
+        // console.log(i);
+
+        // 案列2：计算1到100的和
+        // let i = 1;
+        // let sum = 0;
+        // while(i <= 100){
+        //     sum += i;
+        //     i++;
+        // }
+        // console.log(sum);
+
+        // 案列3：计算1到100的偶数和
+        let i = 1;
+        let sum = 0;
+        while(i <= 100){
+            if(i % 2 == 0){
+                sum += i;
+            }
+            i++;
+        }
+        console.log(sum);
+
+
+    </script>
+</body>
+</html>

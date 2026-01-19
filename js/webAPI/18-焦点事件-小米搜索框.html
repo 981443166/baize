@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      ul {
+        list-style: none;
+      }
+      body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      a {
+        text-decoration: none;
+        color: #555555;
+      }
+      input {
+        width: 223px;
+        height: 48px;
+        font-style: 14px;
+        margin: 0 auto;
+        border: 1px solid #e0e0e0;
+        padding: 0 10px;
+        transition: all 0.3s;
+      }
+      #box1:hover {
+        border: 1px solid #ff6700;
+      }
+      #box1:focus {
+        outline: none;
+      }
+      .searchBox {
+        display: flex;
+      }
+      .searchBox .searchIcon {
+        width: 48px;
+        height: 48px;
+        padding: 6px;
+        text-align: center;
+        background-color: #e0e0e0;
+        transition: all 0.3s;
+      }
+      .searchBox:hover .searchIcon {
+        background-color: #ff6700;
+      }
+      .searchBox .searchIcon svg {
+        fill: #555555;
+      }
+      .searchBox:hover .searchIcon svg {
+        fill: #fff;
+      }
+      .list {
+        display: none;
+        transform: translateY(-1px);
+        border: 1px solid #ff6700;
+      }
+      .list li {
+        font-size: 14px;
+        padding: 8px;
+      }
+      .list li:hover {
+        background-color: #ff6700;
+      }
+      .list li:hover a {
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="searchBox">
+        <input type="text" id="box1" />
+        <div class="searchIcon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+            <path
+              d="M480 272C480 317.9 465.1 360.3 440 394.7L566.6 521.4C579.1 533.9 579.1 554.2 566.6 566.7C554.1 579.2 533.8 579.2 521.3 566.7L394.7 440C360.3 465.1 317.9 480 272 480C157.1 480 64 386.9 64 272C64 157.1 157.1 64 272 64C386.9 64 480 157.1 480 272zM272 416C351.5 416 416 351.5 416 272C416 192.5 351.5 128 272 128C192.5 128 128 192.5 128 272C128 351.5 192.5 416 272 416z"
+            />
+          </svg>
+        </div>
+      </div>
+      <ul class="list">
+        <li><a href="#">小米笔记本</a></li>
+        <li><a href="#">小米手机</a></li>
+        <li><a href="#">小米平板</a></li>
+        <li><a href="#">小米智能 speaker</a></li>
+        <li><a href="#">小米智能电视</a></li>
+      </ul>
+    </div>
+
+    <script src="../jquery.js"></script>
+
+    <script>
+      const input = document.querySelector("#box1");
+      const list = document.querySelector(".list");
+      const searchIcon = document.querySelector(".searchIcon");
+      const searchIconSvg = document.querySelector(".searchIcon svg");
+      // console.log(input);
+      //原生js实现
+      // 1,获取焦点
+      // input.addEventListener('focus', () => {
+      //     list.style.display = 'block';
+      //     input.style.border = '1px solid #ff6700';
+      //     searchIcon.style.backgroundColor = '#ff6700';
+      //     searchIconSvg.style.fill = '#fff';
+      // })
+      // // 2,失去焦点
+      // input.addEventListener('blur', () => {
+      //     list.style.display = 'none';
+      //     input.style.border = '1px solid #e0e0e0';
+      //     searchIcon.style.backgroundColor = '#e0e0e0';
+      //     searchIconSvg.style.fill = '#555555';
+      // })
+
+      //通过jquery实现
+      // 1,获取焦点
+      $("#box1").focus(() => {
+        $(".list").show();
+        $("#box1").css("border", "1px solid #ff6700");
+        $(".searchIcon").css("background-color", "#ff6700");
+        $(".searchIcon svg").css("fill", "#fff");
+      });
+      // 2,失去焦点
+      $("#box1").blur(() => {
+        $(".list").hide();
+        $("#box1").css("border", "1px solid #e0e0e0");
+        $(".searchIcon").css("background-color", "#e0e0e0");
+        $(".searchIcon svg").css("fill", "#555555");
+      });
+    </script>
+  </body>
+</html>

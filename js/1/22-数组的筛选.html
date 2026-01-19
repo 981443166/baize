@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1. 数组的筛选
+        // 1.1 筛选出数组中所有的偶数
+        let arr = [1,2,3,4,5,6,7,8,9,10];
+        let arr2 = [];
+        for(let i = 0;i < arr.length;i++){
+            if(arr[i] % 2 == 0){
+                arr2.push(arr[i]);
+            }
+        }
+        console.log(arr2);
+
+        // 1.2 筛选出数组中比10大的数
+        let arr3 = [50,10,20,30,4,6,70,80,90,100];
+        let arr4 = [];
+        for(let i = 0;i < arr3.length;i++){
+            if(arr3[i] > 10){
+                arr4.push(arr3[i]);
+            }
+        }
+        console.log(arr4);
+    </script>
+</body>
+</html>

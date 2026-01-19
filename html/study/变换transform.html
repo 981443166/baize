@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .box{
+            position: absolute;
+            top: 20%;
+            left: 38%;
+            overflow: hidden;
+            width: 600px;
+            height: 600px;
+            background-color: pink;
+            border-radius: 500px;
+            text-align: center;
+            /* 变换： 过渡 */
+            transition: all 1s;
+        }
+        .box img{
+            position: relative;
+            top: 430px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .box:hover{
+            /* 变换： 移动 */
+            /* transform: translate(0, 100px); */
+            /* 变换： 旋转 */
+            /* transform: rotate(360deg); */
+            /* 变换： 旋转基点 */
+            /* transform-origin: left top; */
+            /* 变换： 缩放 */
+            /* transform: scale(1.5); */
+            /* 变换： 倾斜 */
+            transform: skew(30deg, 30deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <img src="../img/彭于晏.png" alt="彭于晏">
+    </div>
+</body>
+</html>

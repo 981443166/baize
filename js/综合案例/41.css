@@ -1,0 +1,74 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+ul,ol {
+  list-style: none;
+}
+a{
+  text-decoration: none;
+}
+body {
+  background-color: #f3f5f7;
+}
+.course {
+  display: flex;
+  height: 1200px;
+  justify-content: center;
+  align-items: center;
+}
+.course .h {
+  width: 50%;
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+}
+
+.course  li {
+  display: grid;
+  grid-template-rows: 1fr auto auto;
+}
+.h li {
+  width: 228px;
+  height: 270px;
+  border-radius: 10px;
+  margin-right: 15px;
+  margin-bottom: 15px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.h li:hover {
+  transform: translateY(-5px);
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.h li a > img {
+  width: 100%; 
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.course .h li a h3 {
+  padding: 24px 20px 20px 20px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #000;
+}
+
+.course .into {
+  height: 27px;
+  color: #999;
+  padding: 0 20px;
+  font-size: 14px;
+  line-height: 27px;
+}
+
+.course .into span {
+  color: #ff7c2d;
+  margin-right: 10px;
+  font-weight: 600;
+}
