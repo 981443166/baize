@@ -1,0 +1,179 @@
+/* Glass Card Container */
+.glass-card {
+  --bg-color: rgba(255, 255, 255, 0.25);
+  --highlight: rgba(255, 255, 255, 0.75);
+  --text: #ffffff;
+  
+  position: relative;
+  width: 300px;
+  height: 200px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform-style: preserve-3d;
+}
+
+/* Hover effect for glass card */
+.glass-card:hover {
+  transform: translateY(-10px) scale(1.03) rotateX(2deg) rotateY(2deg);
+  box-shadow: 
+    0 16px 64px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 0 30px rgba(255, 255, 255, 0.15);
+}
+
+.glass-filter,
+.glass-overlay,
+.glass-specular {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.glass-filter {
+  z-index: 1;
+  backdrop-filter: blur(4px);
+  filter: url(#glass-distortion) saturate(120%) brightness(1.15);
+}
+
+/* Hover effect for glass filter */
+.glass-card:hover .glass-filter {
+  backdrop-filter: blur(8px) saturate(140%) brightness(1.2);
+  filter: url(#glass-distortion) saturate(140%) brightness(1.2) contrast(1.05);
+}
+
+.glass-distortion-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 30%, rgba(255,255,255,0.05) 0%, transparent 80%),
+              radial-gradient(circle at 80% 70%, rgba(255,255,255,0.05) 0%, transparent 80%);
+  background-size: 300% 300%;
+  animation: floatDistort 10s infinite ease-in-out;
+  mix-blend-mode: overlay;
+  z-index: 2;
+  pointer-events: none;
+  transition: all 0.4s ease;
+}
+
+/* Hover effect for distortion overlay */
+.glass-card:hover .glass-distortion-overlay {
+  background: 
+    radial-gradient(circle at 15% 25%, rgba(255,255,255,0.1) 0%, transparent 70%),
+    radial-gradient(circle at 85% 75%, rgba(255,255,255,0.08) 0%, transparent 70%),
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.06) 0%, transparent 60%);
+  background-size: 400% 400%;
+  animation: floatDistort 6s infinite ease-in-out;
+}
+
+@keyframes floatDistort {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
+}
+
+.glass-overlay {
+  z-index: 2;
+  background: var(--bg-color);
+}
+
+/* Hover effect for glass overlay */
+.glass-card:hover .glass-overlay {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.glass-specular {
+  z-index: 3;
+  box-shadow: inset 1px 1px 1px var(--highlight);
+}
+
+/* Hover effect for glass specular */
+.glass-card:hover .glass-specular {
+  box-shadow: 
+    inset 1px 1px 1px rgba(255, 255, 255, 0.9),
+    inset -1px -1px 1px rgba(255, 255, 255, 0.2);
+  background: 
+    radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.2) 0%, transparent 40%),
+    radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  animation: specularShine 2s ease-in-out infinite alternate;
+}
+
+/* Specular shine animation */
+@keyframes specularShine {
+  0% {
+    transform: translateX(-5%) translateY(-5%);
+  }
+  100% {
+    transform: translateX(5%) translateY(5%);
+  }
+}
+
+.glass-content {
+  position: relative;
+  z-index: 4;
+  padding: 20px;
+  color: var(--text);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Hover effect for glass content */
+.glass-card:hover .glass-content {
+  transform: translateZ(20px);
+}
+
+.glass-content h3 {
+  margin: 0 0 10px 0;
+  font-size: 24px;
+  font-weight: 600;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Hover effect for heading */
+.glass-card:hover .glass-content h3 {
+  opacity: 1;
+  transform: translateY(-4px) scale(1.05);
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.3),
+    0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.glass-content p {
+  margin: 0;
+  opacity: 0.8;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Hover effect for paragraph */
+.glass-card:hover .glass-content p {
+  opacity: 1;
+  transform: translateY(2px);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+  .glass-card {
+    --bg-color: rgba(0, 0, 0, 0.25);
+    --highlight: rgba(255, 255, 255, 0.15);
+  }
+  
+  .glass-card:hover {
+    box-shadow: 
+      0 16px 64px rgba(0, 0, 0, 0.3),
+      0 0 0 1px rgba(255, 255, 255, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+  
+  .glass-card:hover .glass-overlay {
+    background: rgba(0, 0, 0, 0.35);
+  }
+}

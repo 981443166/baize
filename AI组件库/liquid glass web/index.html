@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liquid Glass Effect</title>
+    <link rel="stylesheet" href="index.css">
+    <style>
+        /* Page Background */
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+        
+        /* Background Gradient Animation */
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        /* Background Decorations */
+        .background-decoration {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+        }
+        
+        .bg-1 {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: 10%;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .bg-2 {
+            width: 400px;
+            height: 400px;
+            bottom: 10%;
+            right: 10%;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+        
+        .bg-3 {
+            width: 200px;
+            height: 200px;
+            top: 50%;
+            right: 15%;
+            animation: float 7s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-20px) scale(1.05); }
+        }
+        
+        /* Glass Cards Container */
+        .cards-container {
+            display: flex;
+            gap: 40px;
+            z-index: 10;
+            perspective: 1000px;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .cards-container {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .glass-card {
+                width: 280px;
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- SVG Filter for Glass Distortion Effect -->
+    <svg width="0" height="0" style="position: absolute;">
+        <defs>
+            <filter id="glass-distortion">
+                <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="5" result="noise" seed="2" />
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="77" xChannelSelector="R" yChannelSelector="G" />
+            </filter>
+        </defs>
+    </svg>
+    
+    <!-- Background Decorations -->
+    <div class="background-decoration bg-1"></div>
+    <div class="background-decoration bg-2"></div>
+    <div class="background-decoration bg-3"></div>
+    
+    <!-- Glass Cards Container -->
+    <div class="cards-container">
+        <!-- Glass Card 1 -->
+        <div class="glass-card">
+            <div class="glass-filter"></div>
+            <div class="glass-border"></div>
+            <div class="glass-overlay"></div>
+            <div class="glass-distortion-overlay"></div>
+            <div class="glass-specular"></div>
+            <div class="glass-content">
+                <h3>Glass Card 1</h3>
+                <p>Hover over me for interactive effect</p>
+            </div>
+        </div>
+        
+        <!-- Glass Card 2 -->
+        <div class="glass-card">
+            <div class="glass-filter"></div>
+            <div class="glass-border"></div>
+            <div class="glass-overlay"></div>
+            <div class="glass-distortion-overlay"></div>
+            <div class="glass-specular"></div>
+            <div class="glass-content">
+                <h3>Glass Card 2</h3>
+                <p>Liquid glass with mouse interactivity</p>
+            </div>
+        </div>
+        
+        <!-- Glass Card 3 -->
+        <div class="glass-card">
+            <div class="glass-filter"></div>
+            <div class="glass-border"></div>
+            <div class="glass-overlay"></div>
+            <div class="glass-distortion-overlay"></div>
+            <div class="glass-specular"></div>
+            <div class="glass-content">
+                <h3>Glass Card 3</h3>
+                <p>Real-time displacement effect</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JavaScript for Interactive Effects -->
+    <script src="index.js"></script>
+</body>
+</html>
