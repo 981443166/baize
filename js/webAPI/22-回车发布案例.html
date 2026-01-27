@@ -132,6 +132,78 @@
           inset -4px -4px 8px #ffffff;
       }
 
+      /* 评论列表样式 */
+      .comments-list {
+        margin-top: 40px;
+      }
+
+      .comments-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 20px;
+      }
+
+      /* 评论项样式 */
+      .comment-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 20px;
+        padding: 15px;
+        border-radius: 12px;
+        background-color: #e6e6e6;
+        box-shadow:
+          3px 3px 6px #c9c9c9,
+          -3px -3px 6px #ffffff;
+        transition: all 0.3s ease;
+      }
+
+      .comment-item:hover {
+        box-shadow:
+          5px 5px 10px #c9c9c9,
+          -5px -5px 10px #ffffff;
+      }
+
+      /* 头像样式 */
+      .comment-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 15px;
+        box-shadow:
+          2px 2px 4px #c9c9c9,
+          -2px -2px 4px #ffffff;
+      }
+
+      .comment-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* 评论内容样式 */
+      .comment-content {
+        flex: 1;
+        min-width: 0;
+      }
+
+      /* 用户ID样式 */
+      .comment-user {
+        font-size: 14px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 8px;
+      }
+
+      /* 评论文本样式 */
+      .comment-text {
+        font-size: 14px;
+        line-height: 1.5;
+        color: #555;
+        word-wrap: break-word;
+      }
+
       @media (max-width: 768px) {
         .comment-container {
           padding: 20px;
@@ -145,6 +217,27 @@
         .comment-button {
           padding: 10px 20px;
           font-size: 14px;
+        }
+
+        .comment-item {
+          padding: 12px;
+          margin-bottom: 15px;
+        }
+
+        .comment-avatar {
+          width: 36px;
+          height: 36px;
+          margin-right: 12px;
+        }
+
+        .comment-user {
+          font-size: 13px;
+          margin-bottom: 6px;
+        }
+
+        .comment-text {
+          font-size: 13px;
+          line-height: 1.4;
         }
       }
     </style>
@@ -167,17 +260,60 @@
             <span class="comment-length-total">字数统计: 0</span>
           </div>
         </div>
-        <button class="comment-button">提交评论</button>
+        <button class="comment-button">提交评论（Enter 键提交）</button>
+      </div>
+      
+      <div class="comments-list">
+        <h3 class="comments-title" >评论列表</h3>
+        <div class="comment-item" style="display: none;">
+          <div class="comment-avatar">
+            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=user%20avatar%20profile%20picture%20portrait%202&image_size=square" alt="用户头像">
+          </div>
+          <div class="comment-content">
+            <div class="comment-user">测试用户</div>
+            <div class="comment-text">这是另一条评论示例，用于测试评论列表的显示效果。评论组件采用了模块化设计，包含头像、用户ID和评论内容三个核心元素。</div>
+          </div>
+        </div>
       </div>
     </div>
-
+    
 
     <script src="../jquery.js"></script>
     <script>
-        
+        $('.comment-textarea').on('input', () => {
+            $('.comment-length-total').text(`字符统计：${$('.comment-textarea').val().length}`);
+        });
 
-        // 通过jQuery实现
-        
+        // const list = document.querySelector('.comments-list');
+        // const tx = document.querySelector('.comment-textarea');
+        // const item = document.querySelector('.comment-item');
+        // const text = document.querySelector('.comment-text');
+        // const title = document.querySelector('.comment-length-total');
+        // tx.addEventListener('keyup',(e) => {
+        //     if (e.key === 'Enter') {
+        //         // console.log(11);
+        //         item.style.display = 'block';
+        //         text.textContent = tx.value;
+        //         // 清空输入框
+        //         tx.value = '';
+        //         // 重置字符统计
+        //         title.textContent = '字符统计：0';
+        //     }
+        // })
+
+
+        //jquery写法
+        // $('.comment-textarea').on('keyup', (e) => {
+        //   if (e.key === 'Enter') {
+        //     // console.log(11);
+        //     $('.comment-item').css('display', 'block');
+        //     $('.comment-text').text($('.comment-textarea').val());
+        //     // 清空输入框
+        //     $('.comment-textarea').val('');
+        //     // 重置字符统计
+        //     $('.comment-length-total').text('字符统计：0');
+        //   }
+        // });
     </script>
   </body>
 </html>
