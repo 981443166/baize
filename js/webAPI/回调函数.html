@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 回调函数：指的是将一个函数作为参数传递给另一个函数，在另一个函数中调用该函数 -->
+    <button>点击我</button>
+
+    <script>
+        function fn() {
+            console.log('hello world');
+        }
+        //fn作为回调函数，会在1秒后被调用，从而实现定时器的效果
+        setInterval(fn,1000);
+
+        const btn =document.querySelector('button');
+        //同样作为回调函数，会在点击按钮时被调用
+        btn.addEventListener('click',function() {
+            console.log(this);
+        })
+    </script>
+</body>
+</html>

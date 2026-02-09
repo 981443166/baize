@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 环境对象：指的是函数内部特殊的  变量this， 它代表着当前函数运行时的环境对象
+    作用：弄清楚this的指向，可以让我们的代码变得更加简洁 -->
+    <button>点击我</button>
+
+    <script>
+        function fn() {
+            console.log(this);
+        }
+        // 1. 作为普通函数调用
+        fn(); // window
+
+        const btn =document.querySelector('button');
+        //箭头函数没有自己的this，它会继承父级的this从而指向Window，然而Window没有style属性
+        //所以会提示Cannot set properties of undefined (setting 'color')
+        //解决方法：使用普通函数，或者使用call、apply、bind方法改变this指向
+        btn.addEventListener('click',function() {
+            // console.log(this); // 点击按钮，this指向按钮对象
+            // btn.style.backgroundColor = 'red';
+            this.style.backgroundColor = 'red'
+        }); 
+
+
+    </script>
+</body>
+</html>
