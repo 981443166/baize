@@ -262,58 +262,65 @@
         </div>
         <button class="comment-button">提交评论（Enter 键提交）</button>
       </div>
-      
+
       <div class="comments-list">
-        <h3 class="comments-title" >评论列表</h3>
-        <div class="comment-item" style="display: none;">
+        <h3 class="comments-title">评论列表</h3>
+        <div class="comment-item" style="display: none">
           <div class="comment-avatar">
-            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=user%20avatar%20profile%20picture%20portrait%202&image_size=square" alt="用户头像">
+            <img
+              src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=user%20avatar%20profile%20picture%20portrait%202&image_size=square"
+              alt="用户头像"
+            />
           </div>
           <div class="comment-content">
             <div class="comment-user">测试用户</div>
-            <div class="comment-text">这是另一条评论示例，用于测试评论列表的显示效果。评论组件采用了模块化设计，包含头像、用户ID和评论内容三个核心元素。</div>
+            <div class="comment-text">
+              这是另一条评论示例，用于测试评论列表的显示效果。评论组件采用了模块化设计，包含头像、用户ID和评论内容三个核心元素。
+            </div>
           </div>
         </div>
       </div>
     </div>
-    
 
     <script src="../jquery.js"></script>
     <script>
-        $('.comment-textarea').on('input', () => {
-            $('.comment-length-total').text(`字符统计：${$('.comment-textarea').val().length}`);
-        });
+      $(".comment-textarea").on("input", () => {
+        $(".comment-length-total").text(
+          `字符统计：${$(".comment-textarea").val().length}`,
+        );
+      });
 
-        // const list = document.querySelector('.comments-list');
-        // const tx = document.querySelector('.comment-textarea');
-        // const item = document.querySelector('.comment-item');
-        // const text = document.querySelector('.comment-text');
-        // const title = document.querySelector('.comment-length-total');
-        // tx.addEventListener('keyup',(e) => {
-        //     if (e.key === 'Enter') {
-        //         // console.log(11);
-        //         item.style.display = 'block';
-        //         text.textContent = tx.value;
-        //         // 清空输入框
-        //         tx.value = '';
-        //         // 重置字符统计
-        //         title.textContent = '字符统计：0';
-        //     }
-        // })
+      const list = document.querySelector(".comments-list");
+      const tx = document.querySelector(".comment-textarea");
+      const item = document.querySelector(".comment-item");
+      const text = document.querySelector(".comment-text");
+      const title = document.querySelector(".comment-length-total");
+      tx.addEventListener("keyup", (e) => {
+        if (e.key === "Enter") {
+          if (tx.value.trim() !== "") {
+            // console.log(11);
+            item.style.display = "block";
+            text.textContent = tx.value;
+            // 清空输入框
+            tx.value = "";
+          }
+          // 重置字符统计
+          title.textContent = "字符统计：0";
+        }
+      });
 
-
-        //jquery写法
-        // $('.comment-textarea').on('keyup', (e) => {
-        //   if (e.key === 'Enter') {
-        //     // console.log(11);
-        //     $('.comment-item').css('display', 'block');
-        //     $('.comment-text').text($('.comment-textarea').val());
-        //     // 清空输入框
-        //     $('.comment-textarea').val('');
-        //     // 重置字符统计
-        //     $('.comment-length-total').text('字符统计：0');
-        //   }
-        // });
+      //jquery写法
+      // $('.comment-textarea').on('keyup', (e) => {
+      //   if (e.key === 'Enter') {
+      //     // console.log(11);
+      //     $('.comment-item').css('display', 'block');
+      //     $('.comment-text').text($('.comment-textarea').val());
+      //     // 清空输入框
+      //     $('.comment-textarea').val('');
+      //     // 重置字符统计
+      //     $('.comment-length-total').text('字符统计：0');
+      //   }
+      // });
     </script>
   </body>
 </html>
