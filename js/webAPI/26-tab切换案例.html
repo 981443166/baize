@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拟态玻璃风格</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            padding: 30px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .tab-item {
+            flex: 1;
+            padding: 15px 20px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            color: rgba(255, 255, 255, 0.7);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        /* .tab-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.9);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        } */
+
+        .tab-item.active {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.4);
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .content-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .tab-content {
+            display: none;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .tab-content:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .tab-content h2 {
+            color: #fff;
+            margin-bottom: 15px;
+            font-size: 24px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .tab-content p {
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .tab-content ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .tab-content li {
+            color: rgba(255, 255, 255, 0.8);
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .tab-content li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .glass-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            color: #fff;
+            text-decoration: none;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .glass-button:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .glass-card {
+                padding: 20px;
+            }
+
+            .tabs {
+                flex-direction: column;
+            }
+
+            .tab-item {
+                margin-bottom: 5px;
+            }
+
+            .tab-content {
+                padding: 20px;
+            }
+
+            .icon {
+                font-size: 36px;
+            }
+
+            .tab-content h2 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="glass-card">
+            <div class="tabs">
+                <div class="tab-item active">🏠 首页</div>
+                <div class="tab-item">📊 数据</div>
+                <div class="tab-item">⚙️ 设置</div>
+            </div>
+
+            <div class="content-container">
+                <div class="tab-content active">
+                    <span class="icon">🏠</span>
+                    <h2>欢迎来到首页</h2>
+                    <p>这是一个使用纯CSS实现的拟态玻璃风格界面。通过使用backdrop-filter、半透明背景和细腻的边框来创建具有深度感的视觉效果。</p>
+                    <ul>
+                        <li>完全响应式设计</li>
+                        <li>流畅的动画过渡</li>
+                        <li>优雅的视觉效果</li>
+                    </ul>
+                    <a href="#" class="glass-button">了解更多</a>
+                </div>
+
+                <div class="tab-content">
+                    <span class="icon">📊</span>
+                    <h2>数据分析</h2>
+                    <p>拟态玻璃风格（Glassmorphism）是一种流行的UI设计趋势，它通过模糊背景、半透明效果和细腻的边框来创建具有深度感的界面。</p>
+                    <ul>
+                        <li>backdrop-filter实现背景模糊</li>
+                        <li>rgba实现半透明效果</li>
+                        <li>box-shadow创建深度感</li>
+                        <li>border添加细腻边框</li>
+                    </ul>
+                    <a href="#" class="glass-button">查看详情</a>
+                </div>
+
+                <div class="tab-content">
+                    <span class="icon">⚙️</span>
+                    <h2>系统设置</h2>
+                    <p>这种设计风格的核心在于创造一种类似毛玻璃的视觉效果，让用户能够感受到界面的层次感和空间感。</p>
+                    <ul>
+                        <li>使用backdrop-filter属性</li>
+                        <li>配合半透明背景色</li>
+                        <li>添加适当的阴影效果</li>
+                        <li>保持良好的可读性</li>
+                    </ul>
+                    <a href="#" class="glass-button">配置选项</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        const tabs = document.querySelectorAll('.tab-item');
+        for(let i = 0;i < tabs.length;i++){
+            // console.log(tabs[i]);
+            tabs[i].addEventListener('mouseenter',function() {
+                // 先将所有tab-item的active类移除
+                document.querySelector('.tab-item.active').classList.remove('active');
+                this.classList.add('active');
+                // 先将所有tab-content的active类移除
+                document.querySelector('.tab-content.active').classList.remove('active');
+                // document.querySelectorAll('.tab-content')[i].classList.add('active');
+                document.querySelector(`.tab-content:nth-child(${i+1})`).classList.add('active');
+            })
+            
+        }
+    </script>
+</body>
+</html>
