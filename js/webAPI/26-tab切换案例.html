@@ -264,5 +264,15 @@
             
         }
     </script>
+    <!-- 引入jQuery库 -->
+    <script src="../jquery.js"></script>
+
+    <script>
+        $('.tab-item').mouseenter(function () { 
+            // siblings()方法用于获取所有同级元素
+            $(this).addClass('active').siblings().removeClass('active');
+            $(`.tab-content:nth-child(${$(this).index()+1})`).addClass('active').siblings().removeClass('active');
+        });
+    </script>
 </body>
 </html>
