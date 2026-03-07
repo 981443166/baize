@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新拟态风格表单 - 全选反选案例</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #e0e5ec;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #4a5568;
+        }
+
+        .form-container {
+            background: #e0e5ec;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 
+                8px 8px 16px #c8ccd4,
+                -8px -8px 16px #f8ffff;
+            width: 100%;
+            max-width: 400px;
+            transition: all 0.3s ease;
+        }
+
+        .form-container:hover {
+            box-shadow: 
+                10px 10px 20px #c8ccd4,
+                -10px -10px 20px #f8ffff;
+            transform: translateY(-2px);
+        }
+
+        .form-title {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 24px;
+            font-weight: 600;
+            color: #4a5568;
+            text-shadow: 1px 1px 1px #f8ffff, -1px -1px 1px #c8ccd4;
+        }
+
+        .check-all-container {
+            margin-bottom: 30px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 12px 20px;
+            border-radius: 12px;
+            background: #e0e5ec;
+            box-shadow: 
+                4px 4px 8px #c8ccd4,
+                -4px -4px 8px #f8ffff;
+        }
+
+        .checkbox-item:hover {
+            box-shadow: 
+                2px 2px 4px #c8ccd4,
+                -2px -2px 4px #f8ffff;
+            transform: translateY(-1px);
+        }
+
+        .checkbox-item:active {
+            box-shadow: 
+                inset 2px 2px 4px #c8ccd4,
+                inset -2px -2px 4px #f8ffff;
+            transform: translateY(0);
+        }
+
+        /* 自定义复选框样式 */
+        input[type="checkbox"] {
+            position: relative;
+            width: 22px;
+            height: 22px;
+            appearance: none;
+            background: #e0e5ec;
+            border-radius: 6px;
+            box-shadow: 
+                inset 2px 2px 4px #c8ccd4,
+                inset -2px -2px 4px #f8ffff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        input[type="checkbox"]:checked {
+            background: #667eea;
+            box-shadow: 
+                2px 2px 4px #c8ccd4,
+                -2px -2px 4px #f8ffff;
+        }
+
+        input[type="checkbox"]:checked::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        input[type="checkbox"]:hover {
+            box-shadow: 
+                inset 1px 1px 2px #c8ccd4,
+                inset -1px -1px 2px #f8ffff;
+        }
+
+        /* 全选复选框特殊样式 */
+        #checkAll {
+            width: 24px;
+            height: 24px;
+        }
+
+        .check-all-label {
+            font-size: 16px;
+            font-weight: 500;
+            color: #4a5568;
+            text-shadow: 1px 1px 1px #f8ffff, -1px -1px 1px #c8ccd4;
+        }
+
+        /* 普通复选框标签 */
+        .checkbox-label {
+            font-size: 14px;
+            font-weight: 400;
+            color: #4a5568;
+            text-shadow: 1px 1px 1px #f8ffff, -1px -1px 1px #c8ccd4;
+            user-select: none;
+        }
+
+        @media (max-width: 480px) {
+            .form-container {
+                padding: 30px 20px;
+                margin: 20px;
+            }
+
+            .checkbox-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .checkbox-item {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2 class="form-title">新拟态风格表单</h2>
+        
+        <form action="">
+            <div class="check-all-container checkbox-item">
+                <input type="checkbox" id="checkAll">
+                <label for="checkAll" class="check-all-label">全选/反选</label>
+            </div>
+
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" name="option" id="option1">
+                    <label for="option1" class="checkbox-label">选项 1</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="option" id="option2">
+                    <label for="option2" class="checkbox-label">选项 2</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="option" id="option3">
+                    <label for="option3" class="checkbox-label">选项 3</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="option" id="option4">
+                    <label for="option4" class="checkbox-label">选项 4</label>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+    <script>
+        const checkAll = document.getElementById('checkAll');
+        const checkboxes = document.querySelectorAll('input[name="option"]');
+
+        checkAll.addEventListener('click',function(){
+            for(let i=0;i<checkboxes.length;i++){
+                checkboxes[i].checked = checkAll.checked;
+            }
+        })
+
+        for(let i=0;i<checkboxes.length;i++){
+            checkboxes[i].addEventListener('click',function(){
+                const checkedCount = document.querySelectorAll('input[name="option"]:checked').length;
+                console.log(checkedCount);
+                
+                checkAll.checked = checkedCount === checkboxes.length;
+            })
+        }
+    </script>
+</body>
+</html>
