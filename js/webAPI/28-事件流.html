@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .father{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+        .son{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+
+
+    <script>
+        //事件流:事件处理的顺序，从外到内，从内到外
+        // 事件捕获：事件从外到内触发，事件捕获阶段，事件处理函数在事件冒泡阶段执行前执行
+        // 事件冒泡：事件从内到外触发，事件冒泡阶段，事件处理函数在事件捕获阶段执行后执行,元素触发事件后，会依次向上调用父级元素的  同名事件
+        // 第三个参数：事件处理函数的参数，是否为事件捕获阶段执行事件处理函数，默认值为false，，true表示事件捕获阶段执行事件处理函数
+        
+        const father = document.querySelector('.father');
+        const son = document.querySelector('.son');
+        document.addEventListener('click',function(){
+            alert('点击了document');
+        },true)
+        father.addEventListener('click',function(){
+            alert('点击了father');
+        },true)
+        son.addEventListener('click',function(e){
+            alert('点击了son');
+            // 阻止事件冒泡，事件处理函数在事件冒获阶段执行后执行，事件不会冒泡到父级元素
+            e.stopPropagation();
+        },true)
+    </script>
+</body>
+</html>
