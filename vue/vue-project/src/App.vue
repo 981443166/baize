@@ -1,10 +1,18 @@
 <template>
-  <h1 class="title">You did it!</h1>
+  <h1 class="title">You did it!
+    <Person />
+  </h1>
+  
 </template>
 
 <script lang="ts">
+
+  import Person from './components/person.vue'
   export default {
     name: 'App', // 组件名称
+    components: {
+      Person,
+    },
   }
 </script>
 
