@@ -111,21 +111,52 @@
 // }
 // day1 1.5: useState状态管理
 // 引入useState组件
-import { useState } from 'react'
+// import { useState } from 'react'
 
-function App(){
-  // 调用useState组件，定义状态变量count和状态更新函数setCount
-  // 定义状态更新函数setCount
-  const [count, setCount] = useState(0)
-  // 点击事件回调函数
-  function handleClick(){
-    setCount(count + 1)
+// function App(){
+//   // 调用useState组件，定义状态变量count和状态更新函数setCount
+//   // 定义状态更新函数setCount
+//   const [count, setCount] = useState(0)
+//   // 点击事件回调函数
+//   function handleClick(){
+//     setCount(count + 1)
+//   }
+//   return(
+//     <div className="App">
+//       <button onClick={handleClick}>{count}</button>
+//     </div>
+//   )
+// }
+
+// day1 1.6: useState修改状态
+// 引入useState组件
+import { useState } from "react";
+
+function App() {
+  let [count, setCount] = useState(0);
+  function handleClick() {
+    // 直接修改状态变量count，会导致渲染失败
+    // count++;
+    // console.log(count)
+    // 正确的修改状态变量count的方式是调用状态更新函数setCount
+    setCount(count + 1);
+    console.log(count)
   }
-  return(
+  const [name, setName] = useState({name: '王杰'})
+  const changeName = () => {
+    // 直接修改状态变量name.name，会导致渲染失败
+    // name.name = '周杰伦'
+    setName({
+      ...name,
+      name: '周杰伦'
+    })
+  }
+  return (
     <div className="App">
       <button onClick={handleClick}>{count}</button>
-    </div>
-  )
+      <button onClick={changeName}>修改姓名{name.name}</button>
+      </div>
+  );
 }
 
 export default App;
