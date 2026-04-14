@@ -43,17 +43,38 @@
 // }
 
 // day1 1.2: 实现基础条件渲染
-const isLogin = true;
+// const isLogin = true;
+
+// function App(){
+//   return(
+//     <div>
+//       {/* {逻辑与运算} */}
+//       {/* 仅当isLogin为true时，渲染<p>已登录</p> */}
+//       <p>逻辑与运算</p>
+//       {isLogin && <p>已登录</p>}
+//       {/* {三元运算符} */}
+//       {isLogin ? <p>已登录</p> : <p>未登录</p>}
+//     </div>
+//   )
+// }
+
+// day1 1.3: 实现复杂条件渲染
+const getNameType = 0;
+
+function getName(){
+  if(getNameType === 0){
+    return <div>周杰伦</div>
+  }else if(getNameType === 1){
+    return <div>谢霆锋</div>
+  }else{
+    return <div>黎明</div>
+  }
+}
 
 function App(){
   return(
-    <div>
-      {/* {逻辑与运算} */}
-      {/* 仅当isLogin为true时，渲染<p>已登录</p> */}
-      <p>逻辑与运算</p>
-      {isLogin && <p>已登录</p>}
-      {/* {三元运算符} */}
-      {isLogin ? <p>已登录</p> : <p>未登录</p>}
+    <div className="App">
+      {getName()}
     </div>
   )
 }
