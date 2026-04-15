@@ -109,6 +109,7 @@
 //     </div>
 //   )
 // }
+
 // day1 1.5: useState状态管理
 // 引入useState组件
 // import { useState } from 'react'
@@ -130,32 +131,183 @@
 
 // day1 1.6: useState修改状态
 // 引入useState组件
+// import { useState } from "react";
+
+// function App() {
+//   let [count, setCount] = useState(0);
+//   function handleClick() {
+//     // 直接修改状态变量count，会导致渲染失败
+//     // count++;
+//     // console.log(count)
+//     // 正确的修改状态变量count的方式是调用状态更新函数setCount
+//     setCount(count + 1);
+//     console.log(count)
+//   }
+//   const [name, setName] = useState({name: '王杰'})
+//   const changeName = () => {
+//     // 直接修改状态变量name.name，会导致渲染失败
+//     // name.name = '周杰伦'
+//     setName({
+//       ...name,
+//       name: '周杰伦'
+//     })
+//   }
+//   return (
+//     <div className="App">
+//       <button onClick={handleClick}>{count}</button>
+//       <button onClick={changeName}>修改姓名{name.name}</button>
+//       </div>
+//   );
+// }
+
+// day1 1.7: 基础样式
+// 引入样式
+// import './App.css'
+
+// function App(){
+//   return(
+//     <div className="App">
+//       <h1 className="title">Hello React</h1>
+//     </div>
+//   )
+// }
+
+// day1 1.8: 评论案例渲染
+// 引入样式
+import "./index.scss";
+import avatar from "./images/bozai.png";
 import { useState } from "react";
+// 评论列表数据
+const list = [
+  {
+    rpid: 3,
+    user: {
+      uid: "13258165",
+      avatar:
+        "https://img2.woyaogexing.com/2025/04/11/ac1f790fc92ec3be7e4d58f3a5319512.jpg",
+      uname: "周杰伦",
+    },
+    content: "哎哟，不错哦",
+    ctime: "10-18 08: 15",
+    like: 126,
+  },
+  {
+    rpid: 2,
+    user: {
+      uid: "36080105",
+      avatar:
+        "https://img2.woyaogexing.com/2025/04/11/399d2649f54188d5e5b02240cec4517b.jpg",
+      uname: "许嵩",
+    },
+    content: "我寻你千百度 日出到迟暮",
+    ctime: "11-13 11: 29",
+    like: 88,
+  },
+  {
+    rpid: 1,
+    user: {
+      uid: "30009257",
+      avatar: avatar,
+      uname: "黑马前端",
+    },
+    content: "学前端就来黑马",
+    ctime: "10-19 09: 00",
+    like: 66,
+  },
+];
+
+// 当前登录用户信息
+const user = {
+  uid: "30009257",
+  avatar,
+  uname: "bo",
+};
+
+// 导航 Tab 数组
+const tabs = [
+  { type: "hot", text: "最热" },
+  { type: "time", text: "最新" },
+];
 
 function App() {
-  let [count, setCount] = useState(0);
-  function handleClick() {
-    // 直接修改状态变量count，会导致渲染失败
-    // count++;
-    // console.log(count)
-    // 正确的修改状态变量count的方式是调用状态更新函数setCount
-    setCount(count + 1);
-    console.log(count)
-  }
-  const [name, setName] = useState({name: '王杰'})
-  const changeName = () => {
-    // 直接修改状态变量name.name，会导致渲染失败
-    // name.name = '周杰伦'
-    setName({
-      ...name,
-      name: '周杰伦'
-    })
-  }
+  //渲染评论列表
+  const [commentList, setCommentList] = useState(list);
   return (
-    <div className="App">
-      <button onClick={handleClick}>{count}</button>
-      <button onClick={changeName}>修改姓名{name.name}</button>
+    <div className="app">
+      {/* 导航 Tab */}
+      <div className="reply-navigation">
+        <ul className="nav-bar">
+          <li className="nav-title">
+            <span className="nav-title-text">评论</span>
+            {/* 评论数量 */}
+            <span className="total-reply">{10}</span>
+          </li>
+          <li className="nav-sort">{/* 高亮类名： active */}</li>
+        </ul>
       </div>
+
+      <div className="reply-wrap">
+        {/* 发表评论 */}
+        <div className="box-normal">
+          {/* 当前用户头像 */}
+          <div className="reply-box-avatar">
+            <div className="bili-avatar">
+              <img className="bili-avatar-img" src={avatar} alt="用户头像" />
+            </div>
+          </div>
+          <div className="reply-box-wrap">
+            {/* 评论框 */}
+            <textarea
+              className="reply-box-textarea"
+              placeholder="发一条友善的评论"
+              // ref={inputRef}
+              // value={content}
+            />
+            {/* 发布按钮 */}
+            <div className="reply-box-send">
+              <div className="send-text">发布</div>
+            </div>
+          </div>
+        </div>
+        {/* 评论列表 */}
+        <div className="reply-list">
+          {/* 评论项 */}
+          {commentList.map((item) => (
+            <div key={item.rpid} className="reply-item">
+              {/* 头像 */}
+              <div className="root-reply-avatar">
+                <div className="bili-avatar">
+                  <img
+                    className="bili-avatar-img"
+                    alt=""
+                    src={item.user.avatar}
+                  />
+                </div>
+              </div>
+
+              <div className="content-wrap">
+                {/* 用户名 */}
+                <div className="user-info">
+                  <div className="user-name">{item.user.uname}</div>
+                </div>
+                {/* 评论内容 */}
+                <div className="root-reply">
+                  <span className="reply-content">{item.content}</span>
+                  <div className="reply-info">
+                    {/* 评论时间 */}
+                    <span className="reply-time">{item.ctime}</span>
+                    {/* 评论数量 */}
+                    <span className="reply-time">点赞数:{item.like}</span>
+                    <span className="delete-btn">删除</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        ;
+      </div>
+    </div>
   );
 }
 
