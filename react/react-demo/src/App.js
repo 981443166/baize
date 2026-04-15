@@ -272,9 +272,11 @@ function App() {
         {/* 评论列表 */}
         <div className="reply-list">
           {/* 评论项 */}
+          {/* 使用map方法遍历commentList数组，渲染每条评论 */}
           {commentList.map((item) => (
+            // 每条评论使用唯一的rpid作为key，确保React能正确识别和更新列表项
             <div key={item.rpid} className="reply-item">
-              {/* 头像 */}
+              {/* 头像区域：显示评论用户的头像 */}
               <div className="root-reply-avatar">
                 <div className="bili-avatar">
                   <img
@@ -286,18 +288,20 @@ function App() {
               </div>
 
               <div className="content-wrap">
-                {/* 用户名 */}
+                {/* 用户名区域：显示评论用户的名称 */}
                 <div className="user-info">
                   <div className="user-name">{item.user.uname}</div>
                 </div>
-                {/* 评论内容 */}
+                {/* 评论内容区域：包含评论文本、时间、点赞数和删除按钮 */}
                 <div className="root-reply">
+                  {/* 评论的文本内容 */}
                   <span className="reply-content">{item.content}</span>
                   <div className="reply-info">
-                    {/* 评论时间 */}
+                    {/* 评论发布时间 */}
                     <span className="reply-time">{item.ctime}</span>
-                    {/* 评论数量 */}
+                    {/* 评论的点赞数量 */}
                     <span className="reply-time">点赞数:{item.like}</span>
+                    {/* 删除按钮：用于删除当前评论 */}
                     <span className="delete-btn">删除</span>
                   </div>
                 </div>
