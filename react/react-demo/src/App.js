@@ -232,6 +232,9 @@ const tabs = [
 function App() {
   //渲染评论列表
   const [commentList, setCommentList] = useState(list);
+  const handleDel = (id) => {
+    setCommentList(commentList.filter(item => item.rpid !== id))
+  }
   return (
     <div className="app">
       {/* 导航 Tab */}
@@ -302,14 +305,16 @@ function App() {
                     {/* 评论的点赞数量 */}
                     <span className="reply-time">点赞数:{item.like}</span>
                     {/* 删除按钮：用于删除当前评论 */}
-                    <span className="delete-btn">删除</span>
+                    {/* 点击删除按钮时，调用handleDel函数，传递当前评论的rpid作为参数 */}
+                    {user.uid === item.user.uid && (
+                      <span className="delete-btn" onClick={() => handleDel(item.rpid)}>删除</span>
+                    )}
                   </div>
                 </div>
               </div>
             </div>
           ))}
         </div>
-        ;
       </div>
     </div>
   );
