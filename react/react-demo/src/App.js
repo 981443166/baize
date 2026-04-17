@@ -232,7 +232,10 @@ const tabs = [
 function App() {
   //渲染评论列表
   const [commentList, setCommentList] = useState(list);
-  const handleDel = (id) => {
+  // const handleDel = (id) => {
+  //   setCommentList(commentList.filter(item => item.rpid !== id))
+  // }
+  function handleDel(id){
     setCommentList(commentList.filter(item => item.rpid !== id))
   }
   return (
