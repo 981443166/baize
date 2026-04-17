@@ -235,9 +235,17 @@ function App() {
   // const handleDel = (id) => {
   //   setCommentList(commentList.filter(item => item.rpid !== id))
   // }
-  function handleDel(id){
-    setCommentList(commentList.filter(item => item.rpid !== id))
+  function handleDel(id) {
+    setCommentList(commentList.filter((item) => item.rpid !== id));
   }
+
+  // 1,点击谁就把谁的type记录下来
+  // 2,通过记录的type与tabs数组中的type进行对比，判断是否需要添加active类名
+  const [type, setType] = useState("hot");
+  const handleTabs = (type) => {
+    // console.log(type);
+    setType(type);
+  };
   return (
     <div className="app">
       {/* 导航 Tab */}
@@ -250,7 +258,15 @@ function App() {
           </li>
           <li className="nav-sort">
             {/* 首先map遍历Tabs，渲染每个Tab */}
-            {tabs.map(item => <span key={item.type} className="nav-item">{item.text}</span>)}
+            {tabs.map((item) => (
+              <span
+                key={item.type}
+                onClick={() => handleTabs(item.type)}
+                className={`nav-item ${type === item.type ? "active" : ""}`}
+              >
+                {item.text}
+              </span>
+            ))}
           </li>
         </ul>
       </div>
@@ -313,7 +329,12 @@ function App() {
                     {/* 删除按钮：用于删除当前评论 */}
                     {/* 点击删除按钮时，调用handleDel函数，传递当前评论的rpid作为参数 */}
                     {user.uid === item.user.uid && (
-                      <span className="delete-btn" onClick={() => handleDel(item.rpid)}>删除</span>
+                      <span
+                        className="delete-btn"
+                        onClick={() => handleDel(item.rpid)}
+                      >
+                        删除
+                      </span>
                     )}
                   </div>
                 </div>
