@@ -177,7 +177,8 @@
 import "./index.scss";
 import avatar from "./images/bozai.png";
 import { useState } from "react";
-import _ from 'lodash'
+import _ from "lodash";
+import classNames from "classnames";
 // 评论列表数据
 const list = [
   {
@@ -232,7 +233,9 @@ const tabs = [
 
 function App() {
   //渲染评论列表
-  const [commentList, setCommentList] = useState(list);
+  const [commentList, setCommentList] = useState(
+    _.orderBy(list, "like", "desc"),
+  );
   // const handleDel = (id) => {
   //   setCommentList(commentList.filter(item => item.rpid !== id))
   // }
@@ -249,10 +252,10 @@ function App() {
     //基于列表的排序
     if (type === "hot") {
       //按照点赞数排序
-      setCommentList(_.orderBy(commentList, 'like', 'desc'))
+      setCommentList(_.orderBy(commentList, "like", "desc"));
     } else {
       //按照评论时间排序
-      setCommentList(_.orderBy(commentList, 'ctime', 'desc'))
+      setCommentList(_.orderBy(commentList, "ctime", "desc"));
     }
   };
   return (
@@ -271,7 +274,12 @@ function App() {
               <span
                 key={item.type}
                 onClick={() => handleTabs(item.type)}
-                className={`nav-item ${type === item.type ? "active" : ""}`}
+                // 原生写法比较混乱且后期难以维护
+                // className={`nav-item ${type === item.type ? "active" : ""}`}
+                // 使用classnames库，根据type判断是否需要添加active类名
+                className={classNames("nav-item", {
+                  active: type === item.type,
+                })}
               >
                 {item.text}
               </span>
