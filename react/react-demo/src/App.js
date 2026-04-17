@@ -248,7 +248,10 @@ function App() {
             {/* 评论数量 */}
             <span className="total-reply">{10}</span>
           </li>
-          <li className="nav-sort">{/* 高亮类名： active */}</li>
+          <li className="nav-sort">
+            {/* 首先map遍历Tabs，渲染每个Tab */}
+            {tabs.map(item => <span key={item.type} className="nav-item">{item.text}</span>)}
+          </li>
         </ul>
       </div>
 
