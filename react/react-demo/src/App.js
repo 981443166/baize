@@ -177,6 +177,7 @@
 import "./index.scss";
 import avatar from "./images/bozai.png";
 import { useState } from "react";
+import _ from 'lodash'
 // 评论列表数据
 const list = [
   {
@@ -245,6 +246,14 @@ function App() {
   const handleTabs = (type) => {
     // console.log(type);
     setType(type);
+    //基于列表的排序
+    if (type === "hot") {
+      //按照点赞数排序
+      setCommentList(_.orderBy(commentList, 'like', 'desc'))
+    } else {
+      //按照评论时间排序
+      setCommentList(_.orderBy(commentList, 'ctime', 'desc'))
+    }
   };
   return (
     <div className="app">
