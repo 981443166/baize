@@ -22,21 +22,37 @@
 
 
 // react 获取 DOM
-import { useRef } from "react";
+// import { useRef } from "react";
+
+// function App() {
+//   const inputRef = useRef(null);
+//   const showDown = () => {
+//     console.dir(inputRef.current);
+//   }
+//   return (
+//     <div>
+//       <input
+//         type="text"
+//         id="myInput"
+//         ref={inputRef}
+//       />
+//       <button onClick={showDown}>获取DOM</button>
+//     </div>
+//   );
+// }
+
+// 父传子数据
+import './App.scss'
+function Son(props){
+  console.log(props.name);
+  return <div className="son">this is son component,{props.name}</div>
+}
 
 function App() {
-  const inputRef = useRef(null);
-  const showDown = () => {
-    console.dir(inputRef.current);
-  }
+  const name = "this is parent component";
   return (
     <div>
-      <input
-        type="text"
-        id="myInput"
-        ref={inputRef}
-      />
-      <button onClick={showDown}>获取DOM</button>
+      <Son name={name} />
     </div>
   );
 }
