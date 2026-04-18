@@ -181,11 +181,12 @@ import _ from "lodash";
 import classNames from "classnames";
 // 引入dayjs库
 import dayjs from "dayjs";
+import { v4 as uuidv4 } from "uuid";
 
 // 评论列表数据
 const list = [
   {
-    rpid: 3,
+    rpid: uuidv4(),
     user: {
       uid: "13258165",
       avatar:
@@ -197,7 +198,7 @@ const list = [
     like: 126,
   },
   {
-    rpid: 2,
+    rpid: uuidv4(),
     user: {
       uid: "36080105",
       avatar:
@@ -209,7 +210,7 @@ const list = [
     like: 88,
   },
   {
-    rpid: 1,
+    rpid: uuidv4(),
     user: {
       uid: "30009257",
       avatar: avatar,
@@ -270,9 +271,9 @@ function App() {
     setCommentList([
       ...commentList,
       {
-        rpid: 10086,
+        rpid: uuidv4(),
         user: {
-          uid: "30009257",
+          uid: '3213521',
           avatar: avatar,
           uname: "黑马前端",
         },
