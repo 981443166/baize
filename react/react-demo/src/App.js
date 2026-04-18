@@ -1,6 +1,8 @@
 //受控绑定表单
 // import { useState } from "react";
 
+import { useState } from "react";
+
 // function App() {
 //   //1 首先声明一个useState状态
 //   const [value, setValue] = useState("");
@@ -63,23 +65,35 @@
 // }
 
 // 子传父
-// 就是在子组件里面调用父组件的函数
+// 核心:就是在子组件里面调用父组件的函数
+
 // 子组件
-function Son() {
-  const sonMsg = "this is son component";
+// 3.将父传子的数据  作为props传递给子组件
+function Son({onGetSonMsg}) {
+  const sonMsg = "this is son msg";
   return (
     <div>
       <p>this is son</p>
-      <button>send</button>
+      {/* 4. 点击事件调用父组件的函数，把子组件sonMsg的值传递给父组件 */}
+      <button onClick={() => onGetSonMsg(sonMsg)}>send</button>
     </div>
   )
 }
 //父组件
 function App() {
+  // 5. 因为要修改页面状态，所以定义一个状态变量  用于存储子组件传递过来的数据
+  const [msg, setMsg] = useState('');
+  // 1.先声明一个函数
+  const getMsg = (msg) => {
+    console.log(msg);
+    setMsg(msg);
+  }
   return (
     <div>
-      <p>this is parent</p>
-      <Son />
+      {/* 6. 显示子组件传递过来的数据 */}
+      this is parent,{msg}
+      {/* 2. onGetSonMsg父传子数据 */}
+      <Son onGetSonMsg={getMsg} />
     </div>
   );
 }
