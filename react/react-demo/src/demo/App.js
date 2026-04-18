@@ -182,6 +182,7 @@ import classNames from "classnames";
 // 引入dayjs库
 import dayjs from "dayjs";
 import { v4 as uuidv4 } from "uuid";
+import { useRef } from "react";
 
 // 评论列表数据
 const list = [
@@ -244,6 +245,7 @@ function App() {
   //   setCommentList(commentList.filter(item => item.rpid !== id))
   // }
   function handleDel(id) {
+    // setCommentList(commentList.filter((item) => item.user.uid !== id));
     setCommentList(commentList.filter((item) => item.rpid !== id));
   }
 
@@ -254,34 +256,78 @@ function App() {
     // console.log(type);
     setType(type);
     //基于列表的排序
-    if (type === "hot") {
-      //按照点赞数排序
-      setCommentList(_.orderBy(commentList, "like", "desc"));
-    } else {
-      //按照评论时间排序
-      setCommentList(_.orderBy(commentList, "ctime", "desc"));
-    }
-  };
+    // if (type === "hot") {
+    //   //按照点赞数排序
+    //   setCommentList(_.orderBy(commentList, "like", "desc"));
+    // } else {
+    //   //按照评论时间排序
+    //   setCommentList(_.orderBy(commentList, "ctime", "desc"));
+    // }
 
+    //优化性能
+    setCommentList((prevList) => {
+      if (type === "hot") {
+        return _.orderBy(prevList, "like", "desc");
+      } else {
+        return _.orderBy(prevList, "ctime", "desc");
+      }
+    });
+  };
 
   //发表评论
   // 用状态管理获取到评论框内容
   const [content, setContent] = useState("");
+  const inputRef = useRef(null);
   const handlePut = () => {
-    setCommentList([
-      ...commentList,
-      {
-        rpid: uuidv4(),
-        user: {
-          uid: '3213521',
-          avatar: avatar,
-          uname: "黑马前端",
-        },
-        content: content,
-        ctime: dayjs().format("MM-DD hh:mm"),
-        like: 6691,
+    // react18版本
+    // setCommentList([
+    //   ...commentList,
+    //   {
+    //     rpid: uuidv4(),
+    //     user: {
+    //       uid: '30009257',
+    //       avatar: avatar,
+    //       uname: "黑马前端",
+    //     },
+    //     content: content,
+    //     ctime: dayjs(new Date()).format("MM-DD hh:mm"),
+    //     like: 6691,
+    //   },
+    // ]);
+    
+    // 优化性能版本
+    // 创建新评论对象，包含唯一ID、用户信息、评论内容、创建时间和初始点赞数
+    const newComment = {
+      rpid: uuidv4(),
+      user: {
+        uid: "30009257",
+        avatar: avatar,
+        uname: "黑马前端",
       },
-    ]);
+      content: content,
+      ctime: dayjs(new Date()).format("MM-DD hh:mm"),
+      like: 6691,
+    };
+    // 使用函数式更新方式更新评论列表，确保基于最新状态进行操作
+    setCommentList(prevList => {
+      // 将新评论添加到现有列表末尾
+      const updatedList = [
+        ...prevList,
+        newComment,
+      ]
+      // 根据当前选中的排序类型对更新后的列表进行排序
+      if(type === "hot"){
+        // 按点赞数降序排序
+        return _.orderBy(updatedList, "like", "desc");
+      }else{
+        // 按评论时间降序排序
+        return _.orderBy(updatedList, "ctime", "desc");
+      }
+    });
+    // 1.点击发布按钮后，文本域的内容清空
+    setContent("");
+    // 2.重新聚焦评论框
+    inputRef.current?.focus();
   };
 
   return (
@@ -328,12 +374,9 @@ function App() {
             <textarea
               className="reply-box-textarea"
               placeholder="发一条友善的评论"
-              // ref={inputRef}
-              // value={content}
-              content={content}
-              onChange={(e) => {
-                setContent(e.target.value);
-              }}
+              ref={inputRef}
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
             />
             {/* 发布按钮 */}
             <div className="reply-box-send">
