@@ -172,196 +172,227 @@
 // //   )
 // // }
 
-// // day1 1.8: 评论案例渲染
-// // 引入样式
-// import "./index.scss";
-// import avatar from "./images/bozai.png";
-// import { useState } from "react";
-// import _ from "lodash";
-// import classNames from "classnames";
-// // 评论列表数据
-// const list = [
-//   {
-//     rpid: 3,
-//     user: {
-//       uid: "13258165",
-//       avatar:
-//         "https://img2.woyaogexing.com/2025/04/11/ac1f790fc92ec3be7e4d58f3a5319512.jpg",
-//       uname: "周杰伦",
-//     },
-//     content: "哎哟，不错哦",
-//     ctime: "10-18 08: 15",
-//     like: 126,
-//   },
-//   {
-//     rpid: 2,
-//     user: {
-//       uid: "36080105",
-//       avatar:
-//         "https://img2.woyaogexing.com/2025/04/11/399d2649f54188d5e5b02240cec4517b.jpg",
-//       uname: "许嵩",
-//     },
-//     content: "我寻你千百度 日出到迟暮",
-//     ctime: "11-13 11: 29",
-//     like: 88,
-//   },
-//   {
-//     rpid: 1,
-//     user: {
-//       uid: "30009257",
-//       avatar: avatar,
-//       uname: "黑马前端",
-//     },
-//     content: "学前端就来黑马",
-//     ctime: "10-19 09: 00",
-//     like: 66,
-//   },
-// ];
+// day1 1.8: 评论案例渲染
+// 引入样式
+import "../index.scss";
+import avatar from "../images/bozai.png";
+import { useState } from "react";
+import _ from "lodash";
+import classNames from "classnames";
+// 引入dayjs库
+import dayjs from "dayjs";
 
-// // 当前登录用户信息
-// const user = {
-//   uid: "30009257",
-//   avatar,
-//   uname: "bo",
-// };
+// 评论列表数据
+const list = [
+  {
+    rpid: 3,
+    user: {
+      uid: "13258165",
+      avatar:
+        "https://img2.woyaogexing.com/2025/04/11/ac1f790fc92ec3be7e4d58f3a5319512.jpg",
+      uname: "周杰伦",
+    },
+    content: "哎哟，不错哦",
+    ctime: "10-18 08: 15",
+    like: 126,
+  },
+  {
+    rpid: 2,
+    user: {
+      uid: "36080105",
+      avatar:
+        "https://img2.woyaogexing.com/2025/04/11/399d2649f54188d5e5b02240cec4517b.jpg",
+      uname: "许嵩",
+    },
+    content: "我寻你千百度 日出到迟暮",
+    ctime: "11-13 11: 29",
+    like: 88,
+  },
+  {
+    rpid: 1,
+    user: {
+      uid: "30009257",
+      avatar: avatar,
+      uname: "黑马前端",
+    },
+    content: "学前端就来黑马",
+    ctime: "10-19 09: 00",
+    like: 66,
+  },
+];
 
-// // 导航 Tab 数组
-// const tabs = [
-//   { type: "hot", text: "最热" },
-//   { type: "time", text: "最新" },
-// ];
+// 当前登录用户信息
+const user = {
+  uid: "30009257",
+  avatar,
+  uname: "bo",
+};
 
-// function App() {
-//   //渲染评论列表
-//   const [commentList, setCommentList] = useState(
-//     _.orderBy(list, "like", "desc"),
-//   );
-//   // const handleDel = (id) => {
-//   //   setCommentList(commentList.filter(item => item.rpid !== id))
-//   // }
-//   function handleDel(id) {
-//     setCommentList(commentList.filter((item) => item.rpid !== id));
-//   }
+// 导航 Tab 数组
+const tabs = [
+  { type: "hot", text: "最热" },
+  { type: "time", text: "最新" },
+];
 
-//   // 1,点击谁就把谁的type记录下来
-//   // 2,通过记录的type与tabs数组中的type进行对比，判断是否需要添加active类名
-//   const [type, setType] = useState("hot");
-//   const handleTabs = (type) => {
-//     // console.log(type);
-//     setType(type);
-//     //基于列表的排序
-//     if (type === "hot") {
-//       //按照点赞数排序
-//       setCommentList(_.orderBy(commentList, "like", "desc"));
-//     } else {
-//       //按照评论时间排序
-//       setCommentList(_.orderBy(commentList, "ctime", "desc"));
-//     }
-//   };
-//   return (
-//     <div className="app">
-//       {/* 导航 Tab */}
-//       <div className="reply-navigation">
-//         <ul className="nav-bar">
-//           <li className="nav-title">
-//             <span className="nav-title-text">评论</span>
-//             {/* 评论数量 */}
-//             <span className="total-reply">{10}</span>
-//           </li>
-//           <li className="nav-sort">
-//             {/* 首先map遍历Tabs，渲染每个Tab */}
-//             {tabs.map((item) => (
-//               <span
-//                 key={item.type}
-//                 onClick={() => handleTabs(item.type)}
-//                 // 原生写法比较混乱且后期难以维护
-//                 // className={`nav-item ${type === item.type ? "active" : ""}`}
-//                 // 使用classnames库，根据type判断是否需要添加active类名
-//                 className={classNames("nav-item", {
-//                   active: type === item.type,
-//                 })}
-//               >
-//                 {item.text}
-//               </span>
-//             ))}
-//           </li>
-//         </ul>
-//       </div>
+function App() {
+  //渲染评论列表
+  const [commentList, setCommentList] = useState(
+    _.orderBy(list, "like", "desc"),
+  );
+  // const handleDel = (id) => {
+  //   setCommentList(commentList.filter(item => item.rpid !== id))
+  // }
+  function handleDel(id) {
+    setCommentList(commentList.filter((item) => item.rpid !== id));
+  }
 
-//       <div className="reply-wrap">
-//         {/* 发表评论 */}
-//         <div className="box-normal">
-//           {/* 当前用户头像 */}
-//           <div className="reply-box-avatar">
-//             <div className="bili-avatar">
-//               <img className="bili-avatar-img" src={avatar} alt="用户头像" />
-//             </div>
-//           </div>
-//           <div className="reply-box-wrap">
-//             {/* 评论框 */}
-//             <textarea
-//               className="reply-box-textarea"
-//               placeholder="发一条友善的评论"
-//               // ref={inputRef}
-//               // value={content}
-//             />
-//             {/* 发布按钮 */}
-//             <div className="reply-box-send">
-//               <div className="send-text">发布</div>
-//             </div>
-//           </div>
-//         </div>
-//         {/* 评论列表 */}
-//         <div className="reply-list">
-//           {/* 评论项 */}
-//           {/* 使用map方法遍历commentList数组，渲染每条评论 */}
-//           {commentList.map((item) => (
-//             // 每条评论使用唯一的rpid作为key，确保React能正确识别和更新列表项
-//             <div key={item.rpid} className="reply-item">
-//               {/* 头像区域：显示评论用户的头像 */}
-//               <div className="root-reply-avatar">
-//                 <div className="bili-avatar">
-//                   <img
-//                     className="bili-avatar-img"
-//                     alt=""
-//                     src={item.user.avatar}
-//                   />
-//                 </div>
-//               </div>
+  // 1,点击谁就把谁的type记录下来
+  // 2,通过记录的type与tabs数组中的type进行对比，判断是否需要添加active类名
+  const [type, setType] = useState("hot");
+  const handleTabs = (type) => {
+    // console.log(type);
+    setType(type);
+    //基于列表的排序
+    if (type === "hot") {
+      //按照点赞数排序
+      setCommentList(_.orderBy(commentList, "like", "desc"));
+    } else {
+      //按照评论时间排序
+      setCommentList(_.orderBy(commentList, "ctime", "desc"));
+    }
+  };
 
-//               <div className="content-wrap">
-//                 {/* 用户名区域：显示评论用户的名称 */}
-//                 <div className="user-info">
-//                   <div className="user-name">{item.user.uname}</div>
-//                 </div>
-//                 {/* 评论内容区域：包含评论文本、时间、点赞数和删除按钮 */}
-//                 <div className="root-reply">
-//                   {/* 评论的文本内容 */}
-//                   <span className="reply-content">{item.content}</span>
-//                   <div className="reply-info">
-//                     {/* 评论发布时间 */}
-//                     <span className="reply-time">{item.ctime}</span>
-//                     {/* 评论的点赞数量 */}
-//                     <span className="reply-time">点赞数:{item.like}</span>
-//                     {/* 删除按钮：用于删除当前评论 */}
-//                     {/* 点击删除按钮时，调用handleDel函数，传递当前评论的rpid作为参数 */}
-//                     {user.uid === item.user.uid && (
-//                       <span
-//                         className="delete-btn"
-//                         onClick={() => handleDel(item.rpid)}
-//                       >
-//                         删除
-//                       </span>
-//                     )}
-//                   </div>
-//                 </div>
-//               </div>
-//             </div>
-//           ))}
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
 
-// export default App;
+  //发表评论
+  // 用状态管理获取到评论框内容
+  const [content, setContent] = useState("");
+  const handlePut = () => {
+    setCommentList([
+      ...commentList,
+      {
+        rpid: 10086,
+        user: {
+          uid: "30009257",
+          avatar: avatar,
+          uname: "黑马前端",
+        },
+        content: content,
+        ctime: dayjs().format("MM-DD hh:mm"),
+        like: 6691,
+      },
+    ]);
+  };
+
+  return (
+    <div className="app">
+      {/* 导航 Tab */}
+      <div className="reply-navigation">
+        <ul className="nav-bar">
+          <li className="nav-title">
+            <span className="nav-title-text">评论</span>
+            {/* 评论数量 */}
+            <span className="total-reply">{10}</span>
+          </li>
+          <li className="nav-sort">
+            {/* 首先map遍历Tabs，渲染每个Tab */}
+            {tabs.map((item) => (
+              <span
+                key={item.type}
+                onClick={() => handleTabs(item.type)}
+                // 原生写法比较混乱且后期难以维护
+                // className={`nav-item ${type === item.type ? "active" : ""}`}
+                // 使用classnames库，根据type判断是否需要添加active类名
+                className={classNames("nav-item", {
+                  active: type === item.type,
+                })}
+              >
+                {item.text}
+              </span>
+            ))}
+          </li>
+        </ul>
+      </div>
+
+      <div className="reply-wrap">
+        {/* 发表评论 */}
+        <div className="box-normal">
+          {/* 当前用户头像 */}
+          <div className="reply-box-avatar">
+            <div className="bili-avatar">
+              <img className="bili-avatar-img" src={avatar} alt="用户头像" />
+            </div>
+          </div>
+          <div className="reply-box-wrap">
+            {/* 评论框 */}
+            <textarea
+              className="reply-box-textarea"
+              placeholder="发一条友善的评论"
+              // ref={inputRef}
+              // value={content}
+              content={content}
+              onChange={(e) => {
+                setContent(e.target.value);
+              }}
+            />
+            {/* 发布按钮 */}
+            <div className="reply-box-send">
+              <div className="send-text" onClick={handlePut}>
+                发布
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* 评论列表 */}
+        <div className="reply-list">
+          {/* 评论项 */}
+          {/* 使用map方法遍历commentList数组，渲染每条评论 */}
+          {commentList.map((item) => (
+            // 每条评论使用唯一的rpid作为key，确保React能正确识别和更新列表项
+            <div key={item.rpid} className="reply-item">
+              {/* 头像区域：显示评论用户的头像 */}
+              <div className="root-reply-avatar">
+                <div className="bili-avatar">
+                  <img
+                    className="bili-avatar-img"
+                    alt=""
+                    src={item.user.avatar}
+                  />
+                </div>
+              </div>
+
+              <div className="content-wrap">
+                {/* 用户名区域：显示评论用户的名称 */}
+                <div className="user-info">
+                  <div className="user-name">{item.user.uname}</div>
+                </div>
+                {/* 评论内容区域：包含评论文本、时间、点赞数和删除按钮 */}
+                <div className="root-reply">
+                  {/* 评论的文本内容 */}
+                  <span className="reply-content">{item.content}</span>
+                  <div className="reply-info">
+                    {/* 评论发布时间 */}
+                    <span className="reply-time">{item.ctime}</span>
+                    {/* 评论的点赞数量 */}
+                    <span className="reply-time">点赞数:{item.like}</span>
+                    {/* 删除按钮：用于删除当前评论 */}
+                    {/* 点击删除按钮时，调用handleDel函数，传递当前评论的rpid作为参数 */}
+                    {user.uid === item.user.uid && (
+                      <span
+                        className="delete-btn"
+                        onClick={() => handleDel(item.rpid)}
+                      >
+                        删除
+                      </span>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default App;
