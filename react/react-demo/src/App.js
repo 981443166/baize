@@ -1,7 +1,7 @@
 //受控绑定表单
 // import { useState } from "react";
 
-import { useState } from "react";
+import { createContext, useState } from "react";
 
 // function App() {
 //   //1 首先声明一个useState状态
@@ -69,32 +69,99 @@ import { useState } from "react";
 
 // 子组件
 // 3.将父传子的数据  作为props传递给子组件
-function Son({onGetSonMsg}) {
-  const sonMsg = "this is son msg";
-  return (
-    <div>
-      <p>this is son</p>
-      {/* 4. 点击事件调用父组件的函数，把子组件sonMsg的值传递给父组件 */}
-      <button onClick={() => onGetSonMsg(sonMsg)}>send</button>
-    </div>
-  )
-}
+// function Son({onGetSonMsg}) {
+//   const sonMsg = "this is son msg";
+//   return (
+//     <div>
+//       <p>this is son</p>
+//       {/* 4. 点击事件调用父组件的函数，把子组件sonMsg的值传递给父组件 */}
+//       <button onClick={() => onGetSonMsg(sonMsg)}>send</button>
+//     </div>
+//   )
+// }
 //父组件
-function App() {
-  // 5. 因为要修改页面状态，所以定义一个状态变量  用于存储子组件传递过来的数据
-  const [msg, setMsg] = useState('');
-  // 1.先声明一个函数
-  const getMsg = (msg) => {
-    console.log(msg);
-    setMsg(msg);
-  }
+// function App() {
+//   // 5. 因为要修改页面状态，所以定义一个状态变量  用于存储子组件传递过来的数据
+//   const [msg, setMsg] = useState('');
+//   // 1.先声明一个函数
+//   const getMsg = (msg) => {
+//     console.log(msg);
+//     setMsg(msg);
+//   }
+//   return (
+//     <div>
+//       {/* 6. 显示子组件传递过来的数据 */}
+//       this is parent,{msg}
+//       {/* 2. onGetSonMsg父传子数据 */}
+//       <Son onGetSonMsg={getMsg} />
+//     </div>
+//   );
+// }
+
+//使用 状态提升 机制，通过父组件进行兄弟组件之间的数据传递
+// import './App.scss'
+// function A({onGetAName}) {
+//   const name = "this is A component";
+//   return (
+//     <div className="Acomponent">
+//       this is A component
+//       <button onClick={() => onGetAName(name)}>send</button>
+//     </div>
+//   )
+// }
+// function B({name}) {
+//   return (
+//     <div className="Bcomponent">
+//       this is B component,{name}
+//     </div>
+//   )
+// }
+
+// function App() {
+//   const [aName, setAName] = useState('');
+//   const getAName = (name) => {
+//     console.log(name);
+//     setAName(name);
+//   }
+//   return (
+//     <div className="App">
+//       this is app component
+//       <A onGetAName={getAName} />
+//       <B name={aName} />
+//     </div>
+//   );
+// }
+
+// 使用context机制跨层级组件数据传递
+import "./App.scss";
+import { useContext } from 'react'
+// 1. 先声明一个context对象
+const MsgContext = createContext();
+function A() {
   return (
-    <div>
-      {/* 6. 显示子组件传递过来的数据 */}
-      this is parent,{msg}
-      {/* 2. onGetSonMsg父传子数据 */}
-      <Son onGetSonMsg={getMsg} />
+    <div className="Acomponent">
+      this is A component
+       <B />
     </div>
   );
 }
+function B() {
+  // // 3. 从context对象  获取数据
+  const msg = useContext(MsgContext);
+  return <div className="Bcomponent">this is B component,{msg}</div>;
+}
+
+function App() {
+  const msg = "this is app msg";
+  return (
+    <div className="App">
+      {/* // 2. 通过context对象  提供数据 */}
+      <MsgContext.Provider value={msg}>
+        this is app component
+        <A />
+      </MsgContext.Provider>
+    </div>
+  );
+}
+
 export default App;
