@@ -1,56 +1,47 @@
-@import './fonts.scss';
-// .son{
-//     font-family: 'Libre Bodoni', serif;
-//     font-size: 56px;
-//     text-align: center;
-//     margin-top: 20px;
-// }
 .App{
     font-family: 'Libre Bodoni', serif;
-    font-size: 56px;
+    font-size: 6vw;
     text-align: center;
-    margin-top: 20px;
+    margin-top: 1vw;
 }
-.Bcomponent{
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
     font-family: 'Libre Bodoni', serif;
-    font-size: 56px;
-    text-align: center;
-    margin-top: 20px;
 }
-.Acomponent {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: $font-libre;
-    font-size: 48px;
-    text-align: center;
-    margin-top: 20px;
-    line-height: 1.2;
 
-    button {
-        margin-left: 30px;
-        font-family: $font-libre;
-        font-size: 18px;
-        font-style: italic;
-        padding: 12px 28px;
-        background: transparent;
-        border: 2px solid #2c2c2c;
-        color: #2c2c2c;
-        border-radius: 2px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        letter-spacing: 1px;
+li {
+    margin-bottom: 1vw;
+    padding: 12px 20px;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #333;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
 
-        &:hover {
-            background: #2c2c2c;
-            color: #fff;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        }
+    &:hover {
+        padding-left: 30px;
+        color: #1a1a1a;
+        background-color: rgba(0, 0, 0, 0.02);
+    }
 
-        &:active {
-            transform: translateY(0);
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-        }
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 4px;
+        height: 4px;
+        background-color: #2c2c2c;
+        border-radius: 50%;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    &:hover::before {
+        opacity: 1;
     }
 }
