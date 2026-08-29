@@ -1,0 +1,129 @@
+body{
+  margin: 0;
+  padding: 0;
+}
+
+.container1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+.container1 button{
+  margin: 0 5px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #f0f0f0;
+  color: #333;
+  font-size: 16px;
+}
+.container1 p{
+  margin: 0 10px;
+}
+.container1 button:hover{
+  background-color: #e0e0e0;
+}
+
+.container2{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.container2 input{
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.container2 p{
+  margin: 0 10px;
+}
+.container2 button{
+  margin: 0 5px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #f0f0f0;
+  color: #333;
+  font-size: 16px;
+}
+.container2 button:hover{
+  background-color: #e0e0e0;
+}
+
+.container3{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+.container3 p{
+  margin: 0 10px;
+  padding: 5px 10px;
+  border-radius: 50px;
+  color: #fff;
+  background-color: skyblue;
+
+}
+.container3 button{
+  margin: 0 5px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #f0f0f0;
+  color: #333;
+  font-size: 16px;
+}
+.container3 button:hover{
+  background-color: #e0e0e0;
+}
+
+.container4{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.container4 input{
+  padding: 10px 20px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+
+}
+.container4 .pBox{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container4 .pBox p{
+  margin: 0 10px;
+}
+
+
+
+.container4 .buttonBox{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+}
+.container4 .buttonBox button{
+  margin: 10px 5px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #f0f0f0;
+  color: #333;
+  font-size: 16px;
+}
+.container4 .buttonBox button:hover{
+  background-color: #e0e0e0;
+}
